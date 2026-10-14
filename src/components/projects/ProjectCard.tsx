@@ -1,6 +1,7 @@
 import { ArrowUpRight, Eye, Sparkles } from "lucide-react";
 import type { ProjectEntry } from "@/types";
 import { Reveal } from "@/components/ui/Reveal";
+import { GithubIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
 export function ProjectCard({ project, onOpen }: { project: ProjectEntry; onOpen: () => void }) {
@@ -35,7 +36,7 @@ export function ProjectCard({ project, onOpen }: { project: ProjectEntry; onOpen
         <h3 className="relative mt-4 font-display text-xl font-medium tracking-tight sm:text-2xl">
           {project.title}
         </h3>
-        <p className="relative mt-3 text-sm leading-relaxed text-muted">{project.description}</p>
+        <p className="relative mt-3 line-clamp-4 text-sm leading-relaxed text-muted">{project.description}</p>
 
         <div className="relative mt-5 flex flex-wrap gap-2 pt-1">
           {project.technologies.slice(0, 4).map((t) => (
@@ -45,14 +46,28 @@ export function ProjectCard({ project, onOpen }: { project: ProjectEntry; onOpen
           ))}
         </div>
 
-        <button
-          type="button"
-          onClick={onOpen}
-          className="relative mt-auto ml-auto inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary transition-all duration-200 hover:border-primary/60 hover:bg-primary/15 hover:text-text"
-        >
-          <Eye size={15} />
-          View
-        </button>
+        <div className="relative mt-auto flex items-center justify-between gap-3 pt-5">
+          {project.githubUrl ? (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${project.title} on GitHub`}
+              className="inline-flex items-center gap-2 rounded-full border border-border-strong px-3 py-1.5 text-sm font-medium text-muted transition-colors hover:border-primary/50 hover:text-primary"
+            >
+              <GithubIcon size={15} />
+              GitHub
+            </a>
+          ) : <span />}
+          <button
+            type="button"
+            onClick={onOpen}
+            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary transition-all duration-200 hover:border-primary/60 hover:bg-primary/15 hover:text-text"
+          >
+            <Eye size={15} />
+            View
+          </button>
+        </div>
       </div>
     </Reveal>
   );

@@ -10,7 +10,7 @@ export function Leadership() {
   return (
     <section id="impact" className="border-b border-border py-24 sm:py-32">
       <Container>
-        <SectionHeading index="07" title="Leadership & Service" />
+        <SectionHeading index="08" title="Leadership & Service" />
 
         <Reveal className="mx-auto mb-16 max-w-5xl text-center">
           <p className="text-balance font-display text-xl font-medium leading-snug tracking-tight sm:text-2xl">

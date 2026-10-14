@@ -35,7 +35,7 @@ export function Achievements() {
   return (
     <section id="achievements" className="border-b border-border py-24 sm:py-32">
       <Container>
-        <SectionHeading index="08" title="Achievements" description="Recognition earned across academics, competition, and community." />
+        <SectionHeading index="09" title="Achievements" description="Recognition earned across academics, competition, and community." />
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
           {GROUPS.map(({ key, label, icon: Icon }, index) => (

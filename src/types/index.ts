@@ -140,6 +140,7 @@ export interface PublicationEntry {
   id: string;
   title: string;
   authors: string;
+  supervisor?: string;
   status: string;
   abstract: string;
   researchArea: string[];

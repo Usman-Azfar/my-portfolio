@@ -36,6 +36,15 @@ dist/
 # firebase / local tooling
 .firebase/
 .vercel/
+.turbo/
+
+# credentials and local secrets
+*.key
+*.p12
+*.pfx
+service-account*.json
+serviceAccount*.json
+firebase-adminsdk*.json
 
 # logs
 npm-debug.log*

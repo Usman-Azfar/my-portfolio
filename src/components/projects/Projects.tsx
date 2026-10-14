@@ -12,7 +12,7 @@ import { ProjectModal } from "./ProjectModal";
 export function Projects() {
   const [active, setActive] = useState<ProjectEntry | null>(null);
   const orderedProjects = [...projects].sort((a, b) => {
-    const order = { marlin: 0, helmx: 1 };
+    const order = { marlin: 0, helmx: 1, campuscore: 2, moneymate: 3, "8086-debugger": 4 };
     return (order[a.id as keyof typeof order] ?? 99) - (order[b.id as keyof typeof order] ?? 99);
   });
 
@@ -22,7 +22,7 @@ export function Projects() {
         <SectionHeading index="06" title="Projects" description="Case studies, not just links." />
 
         <div className="relative">
-          <div className="flex items-stretch snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="projects-scrollbar flex items-stretch snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
             {orderedProjects.map((project) => (
               <div
                 key={project.id}
@@ -35,7 +35,7 @@ export function Projects() {
 
           <div className="mt-3 flex items-center justify-center gap-2 text-center text-xs font-medium tracking-[0.2em] text-muted">
             <ArrowRight size={14} className="text-primary" />
-            <span>Swipe to see more</span>
+            <span>Drag or scroll to browse projects</span>
           </div>
         </div>
       </Container>

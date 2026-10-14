@@ -63,6 +63,7 @@ export const navigation: NavItem[] = [
   { label: "Experience", href: "#experience" },
   { label: "Research", href: "#research" },
   { label: "Projects", href: "#projects" },
+  { label: "Courses", href: "#certifications" },
   { label: "Impact", href: "#impact" },
   { label: "Achievements", href: "#achievements" },
   { label: "Contact", href: "#contact" },
@@ -369,41 +370,44 @@ export const engineeringJournal: JournalEntryData[] = [
 // ============================================================================
 export const research: ResearchConfig = {
   eyebrow: "RESEARCH",
-  statement: "Dependable AI for High-Consequence Systems",
+  statement: "Multimodal Edge AI for Integrated Motorcycle Safety",
   interests: [
-    "Dependable AI",
+    "Crash Detection",
+    "Driver Drowsiness Monitoring",
     "Edge AI",
-    "Trustworthy AI",
     "Computer Vision",
-    "Public Safety",
-    "Software Engineering",
-    "AI for Societal Impact",
+    "Sensor Fusion",
+    "Embedded Systems",
+    "Voice Interfaces",
+    "Connected Safety",
   ],
   featured: {
     id: "helmx",
-    title: "HelmX — AI-Powered Smart Helmet for Road Safety",
+    title: "HelmX — Multimodal AI Smart Helmet for Road Safety",
     summary:
-      "An end-to-end edge-AI road-safety ecosystem that brings intelligent sensing, real-time risk detection, proactive rider assistance, and automated emergency response together across resource-constrained hardware, intelligent software, and mobile/web applications.",
+      "HelmX is a multi-module smart-helmet research and engineering project spanning crash detection, driver drowsiness monitoring, cameras, inertial and environmental sensors, Raspberry Pi edge computing, voice assistance, and connected safety workflows. Its mobile companion supports rider analytics and helmet customization; its web platform presents helmet information, lets visitors configure a build, and provides Stripe checkout in test mode.",
     metrics: [
-      { value: "~92%", label: "Crash anomaly detection" },
-      { value: "~94%", label: "Drowsiness detection" },
-      { value: "~80ms", label: "Inference" },
-      { value: "~1.5MB", label: "Model footprint" },
+      { value: "Crash + drowsiness", label: "Two AI research tracks" },
+      { value: "Camera + IMU", label: "Primary perception inputs" },
+      { value: "On-device", label: "Edge processing goal" },
+      { value: "Voice + alerts", label: "Rider interaction" },
     ],
     problem:
-      "Motorcycle riders face safety risks that unfold in seconds—drowsiness, sudden crashes, navigation-related distraction, and delayed emergency response. Existing solutions typically address these risks separately, leaving riders without a unified system that can detect danger in real time, provide immediate assistance, and automatically respond when a rider can no longer call for help",
+      "Rider safety involves different signals and response paths: crashes must be detected from sudden motion, drowsiness develops through changing visual and behavioral cues, and the rider needs local feedback that remains useful when connectivity is poor. A useful helmet system also has to account for cameras, sensors, audio, voice interaction, power, and communication as one constrained platform.",
     motivation:
-      "Real-world crash data is scarce and difficult to collect, making fully supervised crash detection challenging. At the same time, safety-critical systems cannot depend entirely on cloud connectivity or powerful remote infrastructure; intelligence needs to operate locally, quickly, and reliably on resource-constrained hardware.",
+      "The project explores how complementary sensing and local AI can support motorcycle safety without making every decision depend on a cloud connection. It brings model behavior together with practical concerns such as alert timing, input quality, power limits, voice interaction, and the reliability of hardware and communication services.",
     methodology:
-      "Developed HelmX as an end-to-end intelligent safety system, beginning with multi-sensor data acquisition from IMU, cameras, GPS, and environmental sensors. An unsupervised crash-anomaly detector was developed to address the scarcity of labeled crash data, while a CNN-based computer-vision model was developed for real-time drowsiness detection. Both models were optimized for low-latency edge inference and integrated with navigation, voice interaction, environmental monitoring, and automated emergency response, with mobile and web applications providing analytics, configuration, and system monitoring.",
+      "The crash-detection track uses accelerometer and gyroscope windows with a temporal Conv1D encoder, a supervised crash classifier, and an unsupervised reconstruction signal; a local alarm gives the rider a cancellation window before a GPS/GSM emergency message. The separate camera-based drowsiness track combines facial appearance with personalized eye-closure, blink, PERCLOS, yawn, head-pose, and input-quality dynamics in a temporal model. Both tracks are developed for edge inference, with subject-disjoint and held-out evaluation used where the datasets support it.",
     architecture:
-      "HelmX follows a four-layer architecture: helmet-mounted sensors and cameras capture real-time rider and environmental data; an edge AI layer processes safety-critical signals locally for low-latency crash and drowsiness detection; cloud infrastructure handles data storage, synchronization, and emergency coordination; and mobile and web applications provide rider analytics, system configuration, monitoring, and control. Together, these layers form a connected safety pipeline from sensing and on-device intelligence to real-time response and user interaction.",
+      "The system design connects helmet cameras and IR illumination, an MPU-compatible IMU, a DHT22 temperature/humidity sensor, an MQ135 air-quality sensor, and NEO-6M GPS and SIM800L GSM modules to a Raspberry Pi-class edge layer. Separate crash and drowsiness pipelines process inertial and visual signals locally. Rider interaction includes a buzzer or vibration warning, voice-command cancellation, a voice assistant with speech recognition and spoken responses, and speaker output. BLE/MQTT, mobile and web software, and emergency messaging provide communication paths. The Android companion app is intended for rider analytics and helmet customization. The web platform presents product information and a 3D configurator, then uses Stripe Checkout in test mode for purchases. The declared hardware setup includes two 10,000 mAh batteries; their wiring and the speaker interface are unspecified. The Pi inventory is a dated configuration snapshot and does not establish end-to-end operation of every module.",
     experiments:
-      "Evaluated the AI models for detection performance and real-time edge inference, while designing the broader system around measurable constraints including detection accuracy, emergency-alert latency, GPS accuracy, usability, battery life, and application stability.",
+      "The crash model is evaluated on held-out windows and recording sessions, with multi-seed results, event-level alert rates, and additional out-of-distribution two-wheeler datasets used to probe generalization. Drowsiness work uses subject-disjoint development rotations and validation-only selection, then assesses causal video replay, event sensitivity, false alerts per hour, unavailable time, and time to first alert inside labeled clips. Clip-start timing is not treated as physiological drowsiness onset.",
     results:
-      "~92% crash-anomaly detection accuracy, ~94% drowsiness detection accuracy, ~80ms on-device inference latency, and a ~1.5MB combined model footprint, demonstrating the feasibility of real-time AI inference on resource-constrained edge hardware.",
-    limitations: "The system is limited by the scarcity of real-world crash data, connectivity requirements for cloud-dependent features, power and hardware constraints on the helmet, and voice-recognition degradation in noisy environments.",
-    futureWork: "Future work includes developing lighter and more efficient edge models, reducing connectivity dependence, expanding multilingual voice support, integrating with government traffic and emergency-response infrastructure, and progressing from an academic prototype toward a commercial-grade safety platform.",
+      "For the crash subsystem, the supplied report records 0.95 ROC-AUC and 0.54 PR-AUC for the classifier on its held-out test split; across five seeds it reports 0.951 ± 0.011 ROC-AUC and 0.317 ± 0.058 F1. External evaluations also exposed transfer limits, including 4–14 false alerts per hour on an external scooter dataset and 0.35 classifier ROC-AUC on unseen DaRUS crashes. These are subsystem- and dataset-specific results, not a performance claim for the complete helmet. The drowsiness track remains exploratory and has no confirmatory performance claim.",
+    limitations:
+      "Crash data is limited and includes staged maneuvers and simulations; the supervised crash classifier has shown poor generalization to some unseen crash types, and false-alert rates rise on external two-wheeler data. Drowsiness datasets have limited diversity and clip-level labels do not identify event onset. The October 2026 Pi inventory is a configuration snapshot, not end-to-end validation, and does not confirm every sensor, voice, camera, or communication path. HelmX is a research prototype, not a certified safety device.",
+    futureWork:
+      "Improve and independently confirm both AI tracks, evaluate on more diverse licensed riding data, and measure false alerts, latency, availability, and power on the target hardware. Complete and validate the voice, speaker, sensor, camera, battery, and emergency-response integrations under realistic operating conditions, while documenting which features are implemented and which remain planned.",
     images: [],
   },
 };
@@ -415,11 +419,19 @@ export const publications: PublicationEntry[] = [
   {
     id: "helmx-thesis",
     title: "HelmX: AI-Powered Smart Helmet for Road Safety",
-    authors: "Usman Azfar, et al.",
-    status: "Bachelor's Thesis — Under Peer Review",
+    authors: "Usman Azfar, Abdul Hanan, Hamza Ahmad, and Awais Imtiaz",
+    supervisor: "Dr. Tayyaba Tariq",
+    status: "Bachelor's Thesis — Accepted",
     abstract:
-      "Presents an unsupervised crash-anomaly detector and a CNN-based drowsiness detector, both optimized for edge deployment, as part of an end-to-end intelligent road-safety prototype integrating hardware sensors, edge AI, cloud infrastructure, mobile applications, and a web dashboard.",
-    researchArea: ["Dependable AI", "Edge AI", "Public Safety"],
+      "Describes HelmX as an integrated motorcycle-safety project spanning inertial-sensor crash detection, camera-based drowsiness monitoring, edge AI, embedded sensors, and rider-facing alert and communication features. Its system scope includes voice interaction, GPS/GSM emergency workflows, an Android companion for rider analytics and helmet customization, and a web platform for product information, build configuration, and Stripe test-mode checkout. Research claims are reported by subsystem and evaluation dataset rather than presented as a single accuracy figure for the complete system.",
+    researchArea: [
+      "Crash Detection",
+      "Driver Monitoring",
+      "Edge AI",
+      "Embedded Systems",
+      "Sensor Fusion",
+      "Public Safety",
+    ],
   },
 ];
 
@@ -463,91 +475,131 @@ export const projects: ProjectEntry[] = [
   {
     id: "helmx",
     slug: "helmx",
-    title: "HelmX- AI Powered Smart Helmet",
+    title: "HelmX - AI-Powered Smart Helmet for Road Safety",
     description:
-      "An AI-powered smart helmet for road safety, combining edge infrastructure, hardware sensors, machine learning models and mobile/web applications into a unified proactive mobility-safety platform.",
+      "An integrated motorcycle-safety research project combining inertial crash detection, camera-based drowsiness monitoring, embedded sensors, edge AI, rider alerts, voice interaction, and emergency workflows. Its ecosystem also includes an Android companion for rider analytics and helmet customization, plus a web platform for helmet information, configuration, and Stripe test-mode checkout.",
     problem:
-      "Motorcycle riders face safety risks that unfold in seconds—drowsiness, sudden crashes, navigation-related distraction, and delayed emergency response. Existing solutions typically address these risks separately, leaving riders without a unified system that can detect danger in real time, provide immediate assistance, and automatically respond when a rider can no longer call for help.",
+      "Motorcycle safety involves distinct risks and response paths: crashes must be detected from sudden motion, drowsiness from visual and behavioral cues, and riders need timely local alerts even when connectivity is limited. Bringing these capabilities together also means accounting for cameras, sensors, audio, power, communication, and useful companion software.",
     solution:
-      "HelmX addresses this gap through an integrated AI-powered safety ecosystem that continuously monitors the rider using on-device sensors and computer vision, detects crashes and drowsiness in real time, provides hands-free navigation and voice assistance, and automatically shares location and triggers emergency alerts when a crash is detected. A dedicated mobile app provides rider analytics and system configuration, while a web application enables broader monitoring and management—bringing these capabilities together into a unified, proactive road-safety solution.",
+      "HelmX brings together two separate AI tracks: an inertial crash-detection pipeline and a camera-based drowsiness-monitoring pipeline, designed for edge processing. The broader system design includes embedded sensing, rider alerts, voice interaction, and GPS/GSM emergency messaging. The Android companion is intended for rider analytics and helmet customization; the web platform provides product information, a 3D configurator, and Stripe Checkout in test mode.",
     technologies: [
-      "Machine Learning",
-      "Deep Learning",
-      "CNN",
+      "Python",
       "Computer Vision",
-      "Edge AI",
-      "IoT",
-      "Embedded Systems",
-      "TensorFlow",
-      "OpenCV",
-      "AWS IoT Core",
-      "MongoDB",
-      "Firebase",
-      "Kotlin",
-      "React.js",
-      "Next JS",
-      "REST APIs",
-      "Cloud"
-  ],
+      "Temporal AI Models",
+      "Raspberry Pi",
+      "IMU / GPS / GSM",
+      "Android Companion",
+      "Next.js",
+      "Three.js",
+      "Stripe",
+    ],
     architecture:
-      "HelmX follows a four-layer architecture: helmet-mounted sensors and cameras capture real-time rider and environmental data; an edge AI layer processes safety-critical signals locally for low-latency crash and drowsiness detection; cloud infrastructure handles data storage, synchronization, and emergency coordination; and mobile and web applications provide rider analytics, system configuration, monitoring, and control. Together, these layers form a connected safety pipeline from sensing and on-device intelligence to real-time response and user interaction.",
+      "Helmet cameras and IR illumination, an MPU-compatible IMU, DHT22 and MQ135 sensors, and GPS/GSM modules connect to a Raspberry Pi-class edge layer. Separate pipelines process inertial crash signals and camera-based drowsiness cues. Rider interaction includes buzzer or vibration alerts, voice cancellation and assistance, and speaker output. BLE/MQTT, emergency messaging, and mobile/web software provide connected workflows. Hardware inventory is a configuration snapshot; it does not establish that every integration is complete or validated end to end.",
     results: [
-      "~92% crash-anomaly detection accuracy",
-      "~94% drowsiness detection accuracy",
-      "~80ms on-device inference",
-      "~1.5MB combined model footprint",
-      "Recognized among the top projects (15–20) with the highest evaluation score (59/60)",
+      "Crash subsystem report: 0.95 ROC-AUC and 0.54 PR-AUC on its held-out test split; external evaluations show generalization limits",
+      "Drowsiness monitoring remains exploratory, without a confirmatory performance claim",
+      "Web platform includes a 3D helmet configurator and Stripe test-mode checkout; Android companion is intended for analytics and customization",
     ],
     images: [],
     videos: [],
+    githubUrl: "https://github.com/Usman-Azfar/HelmX-AI-Powered-Smart-Helmet",
+    liveUrl: "https://helmx-silk.vercel.app/",
     featured: true,
   },
   {
-    id: "course-management",
-    slug: "university-course-management-system",
-    title: "University Course Management System",
+    id: "campuscore",
+    slug: "campuscore-web",
+    title: "CampusCore — Campus Management System",
     description:
-      "A full-featured, role-based Course Management System built with Java and MySQL, replicating core university academic workflows for students, teachers, and administrators.",
+      "A three-role campus portal for students, teachers, and administrators, covering academic records, attendance, grading, fees, course requests, announcements, messaging, and support.",
     problem:
-      "Having encountered some inefficiencies in my university’s content management system—from course enrollment and attendance to grades, transcripts,fee records, announcements and student support—I wanted to explore how a centralized system could make these processes more organized, accessible, and efficient for students, teachers, and administrators.",
+      "Campus workflows are often split across disconnected processes for enrollment, attendance, results, fees, and communication. Each role needs the right view of shared academic data, with business rules enforced consistently on the server.",
     solution:
-      "Designed and built an MVC-based university CMS that unifies academic workflows across Student, Teacher, and Admin roles, enabling course enrollment, attendance and grade management, transcript generation, announcements, messaging, help-desk support, and centralized administrative management through role-based access control.",
+      "Built a Java MVC web application with student, teacher, and administration portals. It supports semester and course management, enrollments and add/drop requests, lecture attendance, grade publishing and transcripts, fee challans, announcements, messaging, and a help desk.",
     technologies: [
-    "Java",
-    "Jakarta EE",
-    "Servlets",
-    "JSP",
-    "MySQL",
-    "MVC",
-    "JavaScript",
-    "Role-Based Authorization"
-],
+      "Java 17",
+      "Jakarta Servlets 6",
+      "JSP",
+      "MySQL 8",
+      "JDBC",
+      "HikariCP",
+      "Apache Tomcat 10.1",
+      "Maven",
+      "JUnit 5",
+    ],
+    architecture:
+      "Requests pass through authentication and role-authorization filters to servlets, which apply ownership checks and validation before calling JDBC DAOs and MySQL. JSP views render escaped output. Transactions protect multi-row operations such as enrollment changes, attendance and grade saves, and bulk fee challans.",
+    results: [
+      "Role-based portals with server-enforced academic and access-control rules",
+      "Includes a live demo populated with fictional data that resets nightly",
+      "JUnit coverage for core academic rules and workflows",
+    ],
     images: [],
     videos: [],
+    githubUrl: "https://github.com/Usman-Azfar/CampusCore-Web",
+    liveUrl: "https://campuscore-web-9ehv.onrender.com/",
   },
   {
-    id: "finance-tracker",
-    slug: "finance-expense-management-app",
-    title: "Finance & Expense Management App",
+    id: "moneymate",
+    slug: "moneymate-android",
+    title: "MoneyMate — Personal Finance Tracker",
     description:
-      "A lightweight Android finance management app built for everyday use, helping users track income and expenses with live balance summaries, search, filtering, and persistent local records.",
+      "A native Android finance app for income, expenses, budgets, and payable or receivable debt, with offline-first Firestore sync, voice-assisted entry, reports, and an app lock.",
     problem:
-      "Managing everyday expenses manually can make it difficult to maintain an accurate running balance, find past transactions, and understand where money is being spent.",
+      "A basic transaction list does not capture debt obligations, budget cycles, or the need to keep recording activity when connectivity drops. Voice entry and AI summaries also need validation and a dependable fallback.",
     solution:
-      "Built a Kotlin-based Android app with real-time income and expense summaries, categorized transaction management, search and filtering, and persistent local storage using SharedPreferences and Gson.",
+      "Built a Kotlin app with local transaction handling and a replayable queue for Firestore synchronization. It includes an on-device rule-based voice parser, optional Gemini-assisted voice parsing with field validation and fallback, an AI finance advisor grounded in summarized user data, budget alerts, PDF/CSV reports, and PIN/fingerprint app locking.",
     technologies: [
-  "Kotlin",
-  "Android",
-  "Material Components",
-  "RecyclerView",
-  "SharedPreferences",
-  "Gson"
-],
+      "Kotlin",
+      "Android Views",
+      "Firebase Authentication",
+      "Cloud Firestore",
+      "Google Gemini",
+      "Android Speech APIs",
+      "Gradle",
+    ],
+    architecture:
+      "The Android app manages finance workflows locally and syncs pending changes to Cloud Firestore through a replayable operation queue when connectivity returns. Voice entry can use a deterministic on-device parser or an optional Gemini parser; model output is schema-checked and validated on-device before it can populate a transaction.",
+    results: [
+      "Tracks income, expenses, payable debt, and receivable debt with settlement and due-date handling",
+      "Offline-first sync with a queued-write fallback",
+      "Exports transaction reports as PDF and CSV",
+    ],
     images: [],
     videos: [],
+    githubUrl: "https://github.com/Usman-Azfar/MoneyMate-Android",
+  },
+  {
+    id: "8086-debugger",
+    slug: "8086-register-command-debugger",
+    title: "8086 Register Command Debugger",
+    description:
+      "A machine-level MS-DOS debugger written in 8086 assembly, inspired by DEBUG.COM. It loads a program into an isolated 64 KB segment and can inspect registers, flags, and memory, disassemble code, and single-step real 8086 instructions.",
+    problem:
+      "Learning low-level debugging requires seeing how instructions change machine state. A simulator can obscure the distinction between emulated behavior and processor execution, while classic DOS tools offer limited guidance and visibility for a learner.",
+    solution:
+      "Implemented DEBUG-style commands for register and flag inspection/editing, memory dump/edit/fill, hexadecimal arithmetic, and disassembly. The trace command uses the processor Trap Flag to execute one instruction at a time, with breakpoint handling for interrupt instructions. A browser demo runs the DOS executable through DOSBox compiled to WebAssembly.",
+    technologies: [
+      "8086 Assembly",
+      "MS-DOS",
+      "JWasm",
+      "DOSBox-X",
+      "Python",
+      "js-dos / WebAssembly",
+    ],
+    architecture:
+      "The DOS program allocates and clears a dedicated 64 KB segment for the debugged program, maintains a register file, and uses DOS interrupt handlers for input, output, and tracing. Trap Flag stepping returns control after each instruction; temporary INT 3 breakpoints handle software interrupts. A Python test harness assembles the program and checks scripted sessions in DOSBox-X.",
+    results: [
+      "Implements register, flags, memory, trace, and 8086 disassembly commands",
+      "Trace executes instructions on the CPU instead of simulating them",
+      "Includes a browser-based DOSBox/WebAssembly demo and automated command-session tests",
+    ],
+    images: [],
+    videos: [],
+    githubUrl: "https://github.com/Usman-Azfar/8086-assembly-debugger",
+    liveUrl: "https://usman-azfar.github.io/8086-assembly-debugger/",
   },
 ];
-
 // ============================================================================
 // LEADERSHIP & SERVICE
 // ============================================================================

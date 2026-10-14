@@ -7,7 +7,11 @@ export function Footer() {
   const links = [
     social.github && { label: "GitHub", href: social.github, icon: GithubIcon },
     social.linkedin && { label: "LinkedIn", href: social.linkedin, icon: LinkedinIcon },
-    { label: "Email", href: `mailto:${social.email}`, icon: Mail },
+    {
+      label: "Email",
+      href: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(social.email)}`,
+      icon: Mail,
+    },
     { label: "CV", href: social.cv, icon: FileText },
   ].filter(Boolean) as { label: string; href: string; icon: typeof Mail }[];
 

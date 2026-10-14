@@ -14,6 +14,9 @@ export function PublicationCard({ publication }: { publication: PublicationEntry
           <div>
             <h3 className="font-display text-lg font-medium tracking-tight">{publication.title}</h3>
             <p className="mt-1 text-sm text-muted">{publication.authors}</p>
+            {publication.supervisor && (
+              <p className="mt-1 text-sm text-muted">Supervisor: {publication.supervisor}</p>
+            )}
           </div>
         </div>
         <span className="rounded-full border border-accent/40 bg-accent/10 px-3 py-1 font-mono text-xs text-accent">
