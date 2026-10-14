@@ -1,0 +1,37 @@
+# This is a Node.js/TypeScript project (Next.js) — there is no Python involved,
+# so this file is not a pip requirements list. It documents the environment and
+# services needed to run and deploy the project. Package versions are pinned in
+# package.json / package-lock.json, which remain the source of truth.
+
+## Runtime
+node >= 20.x        # Next.js 16 requires Node 20.9+
+npm >= 10.x          # or an npm-lockfile-compatible package manager
+
+## Core framework (see package.json for exact versions)
+next==16.3.2
+react==19.2.8
+react-dom==19.2.8
+typescript>=5
+
+## Key libraries
+tailwindcss>=4
+@tailwindcss/postcss>=4
+firebase>=12.18.0
+framer-motion>=13.1.1
+three>=0.185.1
+@react-three/fiber>=9.7.0
+@react-three/drei>=10.7.8
+lucide-react>=1.33.0
+clsx>=2.1.1
+tailwind-merge>=3.6.0
+eslint>=9
+eslint-config-next==16.3.2
+
+## External services
+firebase-project      # Auth (Email/Password) + Firestore, required only for /admin
+                       # journal editor; public site degrades gracefully without it
+
+## Setup
+# 1. npm install
+# 2. cp .env.example .env.local   (fill in Firebase web config)
+# 3. npm run dev

@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/*
+  Color tokens mirror src/config/site.ts `theme`. If you change the palette
+  there, update these values to match — Tailwind utility classes below are
+  generated from these CSS custom properties at build time.
+*/
+:root {
+  --color-background: #030816;
+  --color-background-elevated: #0a1220;
+  --color-surface: #101b2d;
+  --color-surface-secondary: #142236;
+  --color-text: #edf6ff;
+  --color-muted: #a2b3c9;
+  --color-muted-dim: #7387a3;
+  --color-primary: #7dd3fc;
+  --color-secondary: #34d399;
+  --color-accent: #a78bfa;
+  --color-border: rgba(148, 163, 184, 0.18);
+  --color-border-strong: rgba(148, 163, 184, 0.26);
+  --color-glow: rgba(125, 211, 252, 0.22);
+}
+
+@theme inline {
+  --color-background: var(--color-background);
+  --color-background-elevated: var(--color-background-elevated);
+  --color-surface: var(--color-surface);
+  --color-surface-secondary: var(--color-surface-secondary);
+  --color-text: var(--color-text);
+  --color-muted: var(--color-muted);
+  --color-muted-dim: var(--color-muted-dim);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-glow: var(--color-glow);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+select,
+select option {
+  color: var(--color-text);
+  background-color: var(--color-surface-secondary);
+}
+
+select option:hover,
+select option:focus,
+select option:checked {
+  color: var(--color-text);
+  background: rgba(125, 211, 252, 0.18);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background:
+    radial-gradient(900px 500px at 12% -5%, rgba(125, 211, 252, 0.13), transparent 52%),
+    radial-gradient(1000px 700px at 88% 8%, rgba(167, 139, 250, 0.11), transparent 48%),
+    radial-gradient(800px 400px at 50% 100%, rgba(52, 211, 153, 0.06), transparent 42%),
+    linear-gradient(180deg, #040b18 0%, #07111f 16%, #050b17 100%);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  background-attachment: fixed;
+}
+
+section {
+  background: linear-gradient(180deg, rgba(6, 12, 21, 0.08), rgba(6, 12, 21, 0));
+}
+
+::selection {
+  background: var(--color-glow);
+  color: var(--color-text);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-secondary);
+  border-radius: 999px;
+  border: 2px solid var(--color-background);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: var(--color-background);
+  padding: 0.65rem 0.75rem;
+  color: var(--color-text);
+  outline: none;
+}
+
+.field:focus {
+  border-color: var(--color-primary);
+}
+
+.bg-noise {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.035) 1px, transparent 0);
+  background-size: 3px 3px;
+}
