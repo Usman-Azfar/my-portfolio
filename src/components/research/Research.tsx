@@ -31,9 +31,9 @@ export function Research() {
       <Container>
         <SectionHeading index="05" title="Research & Publications" description={research.statement} />
 
-        <Reveal className="mb-14 flex w-full flex-nowrap gap-3">
+        <Reveal className="mb-14 flex w-full flex-wrap justify-center gap-2 sm:gap-3">
           {research.interests.map((interest) => (
-            <Badge key={interest} className="min-w-0 flex-1 justify-center whitespace-normal break-words px-2 py-2 text-center leading-tight">
+            <Badge key={interest} className="max-w-full justify-center whitespace-normal break-words px-3 py-2 text-center leading-tight">
               {interest}
             </Badge>
           ))}
