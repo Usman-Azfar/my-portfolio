@@ -25,6 +25,18 @@ const certifications: CertificationCard[] = [
     type: "pdf",
   },
   {
+    title: "Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization",
+    provider: "Coursera · DeepLearning.AI",
+    file: "improving-deep-neural-networks.pdf",
+    type: "pdf",
+  },
+  {
+    title: "Structuring Machine Learning Projects",
+    provider: "Coursera · DeepLearning.AI",
+    file: "structuring-machine-learning-projects.pdf",
+    type: "pdf",
+  },
+  {
     title: "Supervised Machine Learning",
     provider: "Coursera · DeepLearning.AI",
     file: "supervised-machine-learning.pdf",
@@ -73,6 +85,8 @@ const certificationOrder = [
   "Unsupervised Learning",
   "Advanced Algorithms",
   "Neural Networks and Deep Learning",
+  "Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization",
+  "Structuring Machine Learning Projects",
   "Introduction to Large Language Models",
   "AI Agents 101: MCP and Open Source Inference",
   "AI Agents 201: Design to Deployment",
