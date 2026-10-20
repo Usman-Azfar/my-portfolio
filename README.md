@@ -4,7 +4,7 @@
 
 **Software Engineer · Researcher · Systems Builder**
 
-*I build dependable AI for high-consequence systems.*
+*I build dependable software for high-consequence systems — from financial platforms to applied AI.*
 
 [![Live Site](https://img.shields.io/badge/Live_Site-my--portfolio--usman--0a4c.vercel.app-7CC7FF?style=for-the-badge&logo=vercel&logoColor=white)](https://my-portfolio-usman-0a4c.vercel.app)
 
