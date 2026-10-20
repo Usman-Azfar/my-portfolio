@@ -306,65 +306,28 @@ export const experience: ExperienceEntry[] = [
 
 // ============================================================================
 // DAILY ENGINEERING JOURNAL
-// Seeded with representative entries — fill in the narrative fields as real
-// daily notes are recorded. Marked [ADD CONTENT] where specifics are pending.
+// Day-by-day notes from InfoTech, newest first.
 // ============================================================================
 export const engineeringJournal: JournalEntryData[] = [
   {
-    id: "journal-2026-08-21",
+    id: "journal-2026-10-20",
     experienceId: "infotech",
-    date: "2026-08-21",
-    title: "Client Onboarding Validation Issue",
-    category: "Trade Processing",
-    context: "[ADD CONTENT]",
-    problem: "[ADD CONTENT]",
-    investigation: "[ADD CONTENT]",
-    solution: "[ADD CONTENT]",
-    impact: "[ADD CONTENT]",
-    learning: "[ADD CONTENT]",
-    technologies: ["Java", "Spring Boot", "SQL"],
-  },
-  {
-    id: "journal-2026-08-20",
-    experienceId: "infotech",
-    date: "2026-08-20",
-    title: "Database Query Optimization",
-    category: "Performance",
-    context: "[ADD CONTENT]",
-    problem: "[ADD CONTENT]",
-    investigation: "[ADD CONTENT]",
-    solution: "[ADD CONTENT]",
-    impact: "[ADD CONTENT]",
-    learning: "[ADD CONTENT]",
-    technologies: ["SQL", "Spring Boot"],
-  },
-  {
-    id: "journal-2026-08-19",
-    experienceId: "infotech",
-    date: "2026-08-19",
-    title: "Authentication Issue",
-    category: "Security",
-    context: "[ADD CONTENT]",
-    problem: "[ADD CONTENT]",
-    investigation: "[ADD CONTENT]",
-    solution: "[ADD CONTENT]",
-    impact: "[ADD CONTENT]",
-    learning: "[ADD CONTENT]",
-    technologies: ["Java", "Spring Security"],
-  },
-  {
-    id: "journal-2026-08-18",
-    experienceId: "infotech",
-    date: "2026-08-18",
-    title: "Trade Processing Workflow",
-    category: "Trade Processing",
-    context: "[ADD CONTENT]",
-    problem: "[ADD CONTENT]",
-    investigation: "[ADD CONTENT]",
-    solution: "[ADD CONTENT]",
-    impact: "[ADD CONTENT]",
-    learning: "[ADD CONTENT]",
-    technologies: ["Java", "Spring Boot", "REST APIs"],
+    date: "2026-10-20",
+    title: "OpenID Connect Security Foundation",
+    category: "National ID (Fayda) Integration",
+    context:
+      "Started on the Fayda integration, so investors on our back-office platform can prove their identity with Ethiopia's national digital ID during sign-up and account registration. Today was about getting the security groundwork in place.",
+    problem:
+      "The staging environment didn't behave exactly the way its published configuration described, so I couldn't rely on the docs alone to know what the real integration would need.",
+    investigation:
+      "Ran real test logins against staging and noted every point where the behaviour differed from the spec.",
+    solution:
+      "Built the core security pieces first using standard OpenID Connect building blocks, all behind a feature flag so nothing touched production. Then ran real test logins against staging and wrote every difference from the spec, plus the failure cases I hit, into a findings doc for the team. Most of the later design ended up based on that doc.",
+    impact:
+      "We had a working end-to-end test login by the end of the first day, and a written list of the differences so nobody has to rediscover them later.",
+    learning:
+      "Provider docs are a starting point. A few hours testing against the real system answered things I'd never have got from reading.",
+    technologies: ["Java", "Spring Boot", "OpenID Connect", "OAuth 2.0", "JWT"],
   },
 ];
 
