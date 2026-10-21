@@ -310,6 +310,26 @@ export const experience: ExperienceEntry[] = [
 // ============================================================================
 export const engineeringJournal: JournalEntryData[] = [
   {
+    id: "journal-2026-10-21",
+    experienceId: "infotech",
+    date: "2026-10-21",
+    title: "Verification Endpoints and Persistence",
+    category: "National ID (Fayda) Integration",
+    context:
+      "Turned yesterday's proof of concept into real backend endpoints for the web frontend: start a verification, complete it, and fetch the verified result.",
+    problem:
+      "Partway through, verifications against staging started failing because of a change on the provider's side, and I needed to pin down the exact cause before raising it with them. The API design also had to fit within our existing security setup.",
+    investigation:
+      "Tested the failing responses step by step until I could show the problem was on the provider's side.",
+    solution:
+      "Once I'd confirmed the issue was on the provider's side, I kept verification strict and reported it with evidence instead of loosening the check. Designed the endpoints so a verification result can only be read by the session that started it. Also wrote the database migration and rollback scripts, with constraints so the same identity can't be attached twice.",
+    impact:
+      "Shipped with 89 automated tests. The integration suite against the shared dev database passed 28/28 and cleaned up its own data.",
+    learning:
+      "When something outside your control breaks, collect proof and fail closed. That's much easier to defend than a quick workaround.",
+    technologies: ["Java", "Spring Boot", "REST APIs", "Oracle SQL", "JUnit", "H2"],
+  },
+  {
     id: "journal-2026-10-20",
     experienceId: "infotech",
     date: "2026-10-20",
