@@ -310,6 +310,26 @@ export const experience: ExperienceEntry[] = [
 // ============================================================================
 export const engineeringJournal: JournalEntryData[] = [
   {
+    id: "journal-2026-10-22",
+    experienceId: "infotech",
+    date: "2026-10-22",
+    title: "Database Migration Quality",
+    category: "National ID (Fayda) Integration",
+    context:
+      "Made the Fayda database scripts safe to run in every environment, and built an integration suite to prove the code behaves the same on Oracle as on the in-memory test database.",
+    problem:
+      "H2, which we use for fast unit tests, doesn't support everything Oracle does, like time-zone-aware timestamps and function-based indexes. So tests could pass locally while the real schema behaved differently. The scripts also get run by hand on a shared database, so they had to be re-runnable and fully reversible.",
+    investigation:
+      "Went through the scripts object by object to find what relied on Oracle-only features.",
+    solution:
+      "Switched the verification time columns to time-zone-aware timestamps with database-side defaults and added the remaining indexes. Every script now has pre-checks and a matching rollback that removes everything it creates. Then wrote an Oracle integration suite that's skipped by default, only runs when you switch it on, and deletes every row it inserts.",
+    impact:
+      "Schema changes are now predictable and easy to undo. The Oracle suite became the safety net for every database change after this.",
+    learning:
+      "Fast tests on a stand-in database only get you so far. A small opt-in run against the real engine catches what they miss.",
+    technologies: ["Oracle SQL", "Java", "JUnit", "JDBC", "H2"],
+  },
+  {
     id: "journal-2026-10-21",
     experienceId: "infotech",
     date: "2026-10-21",
