@@ -310,6 +310,26 @@ export const experience: ExperienceEntry[] = [
 // ============================================================================
 export const engineeringJournal: JournalEntryData[] = [
   {
+    id: "journal-2026-10-23",
+    experienceId: "infotech",
+    date: "2026-10-23",
+    title: "Codebase Analysis and Design",
+    category: "National ID (Fayda) Integration",
+    context:
+      "Before enforcing verified identities in account records, I mapped how client data actually gets created, updated, approved and rejected across the existing onboarding paths.",
+    problem:
+      "The onboarding logic is spread over several older endpoints, each with its own conventions, and approval works differently depending on how a client was onboarded. Some of the naming in the code was misleading too, so I couldn't take anything at face value.",
+    investigation:
+      "Traced each save path from the controller down to the database.",
+    solution:
+      "Traced each save path end to end and wrote down how each flow really works, from validation through approval and error handling. From that I put together a list of design decisions and open questions for the team to review.",
+    impact:
+      "The enforcement design is based on how the system really behaves. We found and settled several edge cases before writing any code.",
+    learning:
+      "In a big legacy codebase, careful reading up front is the cheapest testing you can do. The one-page data flow map paid for itself quickly.",
+    technologies: ["Java", "Spring Boot", "JPA/Hibernate", "Oracle SQL", "Technical Design Documentation"],
+  },
+  {
     id: "journal-2026-10-22",
     experienceId: "infotech",
     date: "2026-10-22",
