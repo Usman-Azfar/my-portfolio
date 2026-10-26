@@ -310,6 +310,26 @@ export const experience: ExperienceEntry[] = [
 // ============================================================================
 export const engineeringJournal: JournalEntryData[] = [
   {
+    id: "journal-2026-10-26",
+    experienceId: "infotech",
+    date: "2026-10-26",
+    title: "Notifications and Staging Validation",
+    category: "National ID (Fayda) Integration",
+    context:
+      "Added confirmation emails for verified identities across the three onboarding paths (self sign-up, online registration and broker-assisted registration), then ran the real endpoints against staging for the first time.",
+    problem:
+      "Each path had different needs. Broker-assisted registrations often take longer to finish than online ones, so one fixed rule didn't fit everyone. The dev network connection was also unreliable at times, which broke the default timeouts.",
+    investigation:
+      "Worked out what each onboarding path needed, and looked at how the connection was behaving during the slow periods.",
+    solution:
+      "Built a templated confirmation email for each flow, with the timing rules kept in configuration so each flow can be tuned separately. Tuned the network timeouts, then ran the full flow live against staging.",
+    impact:
+      "First full run of the real endpoints against the identity provider's staging environment. Every step worked and the returned data mapped correctly.",
+    learning:
+      "Same feature, different rules for different users. Keeping those rules in config saved a few rounds of rework when requirements changed.",
+    technologies: ["Java", "Spring Boot", "HTML Email Templates", "Oracle SQL", "Postman"],
+  },
+  {
     id: "journal-2026-10-23",
     experienceId: "infotech",
     date: "2026-10-23",
