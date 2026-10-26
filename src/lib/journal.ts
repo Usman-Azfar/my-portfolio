@@ -4,10 +4,14 @@ import { engineeringJournal } from "@/config/site";
 import type { JournalEntryData } from "@/types";
 import { db, firebaseConfigured } from "./firebase";
 
+function filterByExperience(items: JournalEntryData[], experienceId?: string) {
+  return experienceId ? items.filter((entry) => entry.experienceId === experienceId) : items;
+}
+
 export function useJournalEntries(experienceId?: string) {
-  const filterEntries = (items: JournalEntryData[]) =>
-    experienceId ? items.filter((entry) => entry.experienceId === experienceId) : items;
-  const [entries, setEntries] = useState<JournalEntryData[]>(filterEntries(engineeringJournal));
+  const [entries, setEntries] = useState<JournalEntryData[]>(() =>
+    filterByExperience(engineeringJournal, experienceId)
+  );
 
   useEffect(() => {
     if (!firebaseConfigured || !db) return;
@@ -21,9 +25,9 @@ export function useJournalEntries(experienceId?: string) {
           experienceId: "infotech",
           ...item.data(),
         }) as JournalEntryData);
-        setEntries(filterEntries(items));
+        setEntries(filterByExperience(items, experienceId));
       },
-      () => setEntries(filterEntries(engineeringJournal))
+      () => setEntries(filterByExperience(engineeringJournal, experienceId))
     );
   }, [experienceId]);
 
