@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://usmanazfar.com"; // [ADD CONTENT] — replace once deployed
+import { siteUrl } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

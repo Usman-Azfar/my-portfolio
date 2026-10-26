@@ -1,16 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { siteConfig, person } from "@/config/site";
+import { siteConfig, person, siteUrl } from "@/config/site";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 const spaceGrotesk = Space_Grotesk({ variable: "--font-space-grotesk", subsets: ["latin"], display: "swap" });
 const jetbrainsMono = JetBrains_Mono({ variable: "--font-jetbrains-mono", subsets: ["latin"], display: "swap" });
-
-// [ADD CONTENT] — replace with the real production domain once deployed on Vercel.
-const siteUrl = "https://usmanazfar.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

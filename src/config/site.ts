@@ -40,6 +40,8 @@ export const theme: ThemeConfig = {
 // ============================================================================
 // PERSON
 // ============================================================================
+export const siteUrl = "https://my-portfolio-usman-0a4c.vercel.app";
+
 export const person: PersonConfig = {
   name: "Usman Azfar",
   shortName: "Usman Azfar",
