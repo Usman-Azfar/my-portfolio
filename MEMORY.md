@@ -18,7 +18,7 @@ explicitly *not* a generic dev portfolio. Key constraints from that brief:
 
 ## What exists today
 
-- **Next.js 16 / React 19 / TypeScript** app in `usman-portfolio/`, styled with Tailwind CSS 4.
+- **Next.js 16 / React 19 / TypeScript** app at the repository root, styled with Tailwind CSS 4.
 - All page sections (Hero, About, Education, TechStack, Experience, Research, Projects,
   Leadership/Impact, Achievements) render from `src/config/site.ts`, typed via
   `src/types/index.ts`. This is intentional — see comment at top of `types/index.ts`: keeping
@@ -36,30 +36,24 @@ explicitly *not* a generic dev portfolio. Key constraints from that brief:
   FSc/Matric certificates), and competition/scholarship evidence (NSCT, ISSB, COMSATS, Wushu),
   referenced directly from `education` and `achievements` entries in `site.ts`.
 
-## Known gaps (as of 2026-08-25)
+## Known gaps (as of 2026-10-26)
 
-- **Broken link:** `education` entry `"elementary"` points `resultUrl` at
-  `/documents/Saudia_modified.pdf`, which does not exist in `public/documents/`. Either add the
-  file or remove the link.
 - **Placeholder journal content:** all four seeded `engineeringJournal` entries
   (2026-08-18 → 2026-08-21) have real titles/categories/dates but `context`/`problem`/
   `investigation`/`solution`/`impact`/`learning` are still `"[ADD CONTENT]"`. Intended to be
   filled in via `/admin` as real daily notes are recorded, not hand-edited in `site.ts`.
 - **Missing LinkedIn:** `social.linkedin` is `undefined` in `site.ts`, flagged inline as
   `[ADD CONTENT]`.
-- **Placeholder domain:** `siteUrl` is hardcoded to `https://usmanazfar.com` in
-  `src/app/layout.tsx`, `src/app/sitemap.ts`, and `src/app/robots.ts` — all three flagged
-  `[ADD CONTENT]`, need updating once a real production domain is live on Vercel.
 - **No media yet:** `images`/`videos` arrays are empty for the `research.featured` (HelmX) entry
   and for every `projects` entry in `site.ts`.
-- **Stray sibling files:** the parent directory (`d:\PORTFOLIO\`, one level above
-  `usman-portfolio/`) contains a second, unrelated `package.json`/`package-lock.json` (no name,
-  no scripts, partial dependency list) plus loose copies of the CV/certificates that also live
-  in `public/documents/`. These appear to be leftovers from an earlier scaffold, not part of the
-  active app — the real project root is `usman-portfolio/`. Not cleaned up; flagging so it isn't
-  mistaken for a second live app.
-- Neither `d:\PORTFOLIO\` nor `usman-portfolio/` is currently a git repository — no version
-  history exists yet.
+
+## Resolved since 2026-08-25
+
+- `Saudia_modified.pdf` now exists in `public/documents/`, so the elementary result link works.
+- The project is under git and pushed to GitHub (`Usman-Azfar/my-portfolio`), deployed on
+  Vercel at `https://my-portfolio-usman-0a4c.vercel.app`.
+- `siteUrl` is defined once in `src/config/site.ts` and used by the layout metadata, sitemap and
+  robots; `/admin` is disallowed for crawlers.
 
 ## Decisions worth remembering
 
