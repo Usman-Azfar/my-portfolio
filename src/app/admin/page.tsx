@@ -63,10 +63,9 @@ export default function AdminPage() {
     if (!db || !user) return;
     setMessage("Saving...");
     try {
-      const payload = {
-        ...draft,
-        technologies: draft.technologies,
-      };
+      // Drafts loaded via editEntry carry the document id; keep it out of the stored fields.
+      const payload: Record<string, unknown> = { ...draft };
+      delete payload.id;
       if (editingId) await updateDoc(doc(db, "engineeringJournal", editingId), payload);
       else await addDoc(collection(db, "engineeringJournal"), payload);
       setDraft(emptyEntry);
@@ -88,12 +87,12 @@ export default function AdminPage() {
   };
 
   if (!firebaseConfigured) {
-    return <main className="mx-auto max-w-3xl px-6 py-32 text-text"><h1 className="font-display text-4xl">Admin setup required</h1><p className="mt-4 text-muted">Add the Firebase variables from `.env.example`, enable Email/Password Authentication, and deploy the Firestore rules.</p></main>;
+    return <div className="mx-auto max-w-3xl px-6 py-32 text-text"><h1 className="font-display text-4xl">Admin setup required</h1><p className="mt-4 text-muted">Add the Firebase variables from `.env.example`, enable Email/Password Authentication, and deploy the Firestore rules.</p></div>;
   }
 
   if (!user) {
     return (
-      <main className="mx-auto max-w-md px-6 py-32">
+      <div className="mx-auto max-w-md px-6 py-32">
         <h1 className="font-display text-4xl text-text">Admin login</h1>
         <p className="mt-3 text-muted">Manage engineering journal content.</p>
         <form onSubmit={login} className="mt-8 space-y-4 rounded-2xl border border-border bg-surface/60 p-6">
@@ -102,12 +101,12 @@ export default function AdminPage() {
           <button className="w-full rounded-full bg-primary px-4 py-2 font-medium text-background">Sign in</button>
           {message && <p className="text-sm text-secondary">{message}</p>}
         </form>
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-28 sm:px-8">
+    <div className="mx-auto max-w-6xl px-6 py-28 sm:px-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div><p className="font-mono text-xs tracking-[0.25em] text-primary/70">ADMIN</p><h1 className="mt-3 font-display text-4xl text-text">Engineering Journal</h1></div>
         <button onClick={() => auth && signOut(auth)} className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-primary hover:text-primary">Sign out</button>
@@ -125,6 +124,6 @@ export default function AdminPage() {
         <div className="flex items-center gap-3 sm:col-span-2"><button className="rounded-full bg-primary px-5 py-2 font-medium text-background">{editingId ? "Update entry" : "Add entry"}</button>{editingId && <button type="button" onClick={() => { setEditingId(null); setDraft(emptyEntry); }} className="rounded-full border border-border px-5 py-2 text-sm text-muted">Cancel</button>}<span className="text-sm text-secondary">{message}</span></div>
       </form>
       <div className="mt-8 space-y-3">{entries.map((entry) => <article key={entry.id} className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-border bg-surface/40 p-4"><div><p className="font-medium text-text">{entry.title}</p><p className="text-sm text-muted">{entry.date} · {entry.category}</p></div><div className="flex gap-2"><button onClick={() => editEntry(entry)} className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs text-primary">Edit</button>{!engineeringJournal.some((item) => item.id === entry.id) && <button onClick={() => removeEntry(entry.id)} className="rounded-full border border-red-400/30 bg-red-400/10 px-3 py-1.5 text-xs text-red-300">Delete</button>}</div></article>)}</div>
-    </main>
+    </div>
   );
 }
