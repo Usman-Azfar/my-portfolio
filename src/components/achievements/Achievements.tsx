@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Award, Trophy, GraduationCap, Medal, X, ExternalLink } from "lucide-react";
 import { achievements } from "@/config/site";
-import type { AchievementItem } from "@/types";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -15,22 +14,17 @@ const GROUPS: { key: keyof typeof achievements; label: string; icon: typeof Awar
   { key: "sports", label: "Sports & Extracurricular", icon: Medal },
 ];
 
-function ItemRow({ item, index }: { item: AchievementItem; index: number }) {
-  return (
-    <div className="flex items-start gap-3 border-b border-border/80 py-3 last:border-b-0">
-      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-primary/30 bg-primary/5 font-mono text-[10px] font-semibold text-primary">
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <div className="min-w-0 flex-1">
-        <p className="text-sm font-medium text-text sm:text-base">{item.label}</p>
-        {item.detail && <p className="mt-1 text-xs leading-relaxed text-muted">{item.detail}</p>}
-      </div>
-    </div>
-  );
-}
-
 export function Achievements() {
   const [openKey, setOpenKey] = useState<keyof typeof achievements | null>(null);
+
+  useEffect(() => {
+    if (!openKey) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenKey(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [openKey]);
 
   return (
     <section id="achievements" className="border-b border-border py-24 sm:py-32">
@@ -76,8 +70,16 @@ export function Achievements() {
       </Container>
 
       {openKey && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm">
-          <div className="relative w-full max-w-2xl overflow-hidden rounded-[28px] border border-border/80 bg-[linear-gradient(180deg,rgba(13,21,34,0.98),rgba(11,17,26,0.96))] shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="achievements-modal-title"
+          onClick={() => setOpenKey(null)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-2xl overflow-hidden rounded-[28px] border border-border/80 bg-[linear-gradient(180deg,rgba(13,21,34,0.98),rgba(11,17,26,0.96))] shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
             <div className="flex items-center justify-between border-b border-border/80 bg-surface/80 px-5 py-4 sm:px-6">
               <div className="flex items-center gap-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-2xl border border-primary/30 bg-primary/8 font-mono text-[10px] font-semibold text-primary">
@@ -85,7 +87,7 @@ export function Achievements() {
                 </span>
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary/70">Category</p>
-                  <h3 className="text-lg font-semibold text-text">{GROUPS.find((group) => group.key === openKey)?.label}</h3>
+                  <h3 id="achievements-modal-title" className="text-lg font-semibold text-text">{GROUPS.find((group) => group.key === openKey)?.label}</h3>
                 </div>
               </div>
 
@@ -114,7 +116,7 @@ export function Achievements() {
                             <a
                               href={item.documentUrl}
                               target="_blank"
-                              rel="noreferrer"
+                              rel="noopener noreferrer"
                               className="inline-flex shrink-0 items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary transition-all duration-200 hover:border-primary/60 hover:bg-primary/15 hover:text-text"
                             >
                               View Document
