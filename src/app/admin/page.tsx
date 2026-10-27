@@ -26,7 +26,14 @@ const emptyEntry: Draft = {
   technologies: [],
 };
 
-const narrativeFields = ["context", "problem", "investigation", "solution", "impact", "learning"] as const;
+const narrativeFields = [
+  { key: "context", label: "Context", hint: "Where this happened and what you were working on." },
+  { key: "problem", label: "Problem", hint: "What went wrong or needed solving." },
+  { key: "investigation", label: "Investigation", hint: "How you narrowed down the cause." },
+  { key: "solution", label: "Solution", hint: "What you changed and why." },
+  { key: "impact", label: "Impact", hint: "What improved as a result." },
+  { key: "learning", label: "Learning", hint: "What you would carry into future work." },
+] as const;
 
 const statusStyles = {
   info: "text-muted",
@@ -40,6 +47,30 @@ function StatusMessage({ status }: { status: Status }) {
     <p role={status.tone === "error" ? "alert" : "status"} className={cn("text-sm", statusStyles[status.tone])}>
       {status.text}
     </p>
+  );
+}
+
+function Field({
+  label,
+  htmlFor,
+  hint,
+  className,
+  children,
+}: {
+  label: string;
+  htmlFor: string;
+  hint?: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className={cn("flex flex-col gap-1.5", className)}>
+      <label htmlFor={htmlFor} className="text-xs font-medium uppercase tracking-[0.15em] text-muted">
+        {label}
+      </label>
+      {children}
+      {hint && <p className="text-xs text-muted/80">{hint}</p>}
+    </div>
   );
 }
 
@@ -151,24 +182,28 @@ export default function AdminPage() {
         <h1 className="font-display text-4xl text-text">Admin login</h1>
         <p className="mt-3 text-muted">Manage engineering journal content.</p>
         <form onSubmit={login} className="mt-8 space-y-4 rounded-2xl border border-border bg-surface/60 p-6">
-          <input
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            type="email"
-            autoComplete="username"
-            placeholder="Admin email"
-            required
-            className="field"
-          />
-          <input
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            type="password"
-            autoComplete="current-password"
-            placeholder="Password"
-            required
-            className="field"
-          />
+          <Field label="Email" htmlFor="admin-email">
+            <input
+              id="admin-email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              type="email"
+              autoComplete="username"
+              required
+              className="field"
+            />
+          </Field>
+          <Field label="Password" htmlFor="admin-password">
+            <input
+              id="admin-password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              type="password"
+              autoComplete="current-password"
+              required
+              className="field"
+            />
+          </Field>
           <button
             disabled={pending}
             className="w-full rounded-full bg-primary px-4 py-2 font-medium text-background disabled:cursor-wait disabled:opacity-60"
@@ -198,61 +233,77 @@ export default function AdminPage() {
       </div>
 
       <form onSubmit={saveEntry} className="mt-8 grid gap-4 rounded-2xl border border-border bg-surface/60 p-6 sm:grid-cols-2">
-        <select
-          value={draft.experienceId}
-          onChange={(event) => updateField("experienceId", event.target.value)}
-          required
-          className="field sm:col-span-2"
-        >
-          <option value="">Select the job this journal belongs to</option>
-          {experience.map((entry) => (
-            <option key={entry.id} value={entry.id}>
-              {entry.role} — {entry.organization}
-            </option>
-          ))}
-        </select>
-        <input
-          type="date"
-          value={draft.date}
-          onChange={(event) => updateField("date", event.target.value)}
-          required
-          className="field"
-        />
-        <input
-          value={draft.category}
-          onChange={(event) => updateField("category", event.target.value)}
-          placeholder="Project or category"
-          required
-          className="field"
-        />
-        <input
-          value={draft.title}
-          onChange={(event) => updateField("title", event.target.value)}
-          placeholder="Title"
-          required
-          className="field sm:col-span-2"
-        />
-        {narrativeFields.map((field) => (
-          <textarea
-            key={field}
-            value={draft[field]}
-            onChange={(event) => updateField(field, event.target.value)}
-            placeholder={field[0].toUpperCase() + field.slice(1)}
+        <Field label="Job" htmlFor="entry-job" className="sm:col-span-2">
+          <select
+            id="entry-job"
+            value={draft.experienceId}
+            onChange={(event) => updateField("experienceId", event.target.value)}
             required
-            className="field min-h-28"
+            className="field"
+          >
+            <option value="">Select the job this journal belongs to</option>
+            {experience.map((entry) => (
+              <option key={entry.id} value={entry.id}>
+                {entry.role} — {entry.organization}
+              </option>
+            ))}
+          </select>
+        </Field>
+        <Field label="Date" htmlFor="entry-date">
+          <input
+            id="entry-date"
+            type="date"
+            value={draft.date}
+            onChange={(event) => updateField("date", event.target.value)}
+            required
+            className="field"
           />
+        </Field>
+        <Field label="Project or category" htmlFor="entry-category">
+          <input
+            id="entry-category"
+            value={draft.category}
+            onChange={(event) => updateField("category", event.target.value)}
+            placeholder="e.g. Client onboarding"
+            required
+            className="field"
+          />
+        </Field>
+        <Field label="Title" htmlFor="entry-title" className="sm:col-span-2">
+          <input
+            id="entry-title"
+            value={draft.title}
+            onChange={(event) => updateField("title", event.target.value)}
+            placeholder="A short summary of the work"
+            required
+            className="field"
+          />
+        </Field>
+        {narrativeFields.map(({ key, label, hint }) => (
+          <Field key={key} label={label} htmlFor={`entry-${key}`} hint={hint}>
+            <textarea
+              id={`entry-${key}`}
+              value={draft[key]}
+              onChange={(event) => updateField(key, event.target.value)}
+              required
+              className="field min-h-28"
+            />
+          </Field>
         ))}
-        <input
-          value={draft.technologies.join(", ")}
-          onChange={(event) =>
-            setDraft((current) => ({
-              ...current,
-              technologies: event.target.value.split(",").map((item) => item.trim()).filter(Boolean),
-            }))
-          }
-          placeholder="Technologies, separated by commas"
-          className="field sm:col-span-2"
-        />
+        <Field label="Technologies" htmlFor="entry-technologies" hint="Separate with commas." className="sm:col-span-2">
+          <input
+            id="entry-technologies"
+            value={draft.technologies.join(", ")}
+            onChange={(event) =>
+              setDraft((current) => ({
+                ...current,
+                technologies: event.target.value.split(",").map((item) => item.trim()).filter(Boolean),
+              }))
+            }
+            placeholder="Java, Spring Boot, SQL"
+            className="field"
+          />
+        </Field>
         <div className="flex flex-wrap items-center gap-3 sm:col-span-2">
           <button
             disabled={pending}
