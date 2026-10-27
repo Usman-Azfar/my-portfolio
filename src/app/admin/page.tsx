@@ -1,13 +1,13 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import { addDoc, collection, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut, type User } from "firebase/auth";
 import { engineeringJournal, experience } from "@/config/site";
 import type { JournalEntryData } from "@/types";
 import { auth, db, firebaseConfigured } from "@/lib/firebase";
 import { useJournalEntries } from "@/lib/journal";
-import { cn } from "@/lib/utils";
+import { cn, formatJournalDate } from "@/lib/utils";
 
 type Draft = Omit<JournalEntryData, "id">;
 type Status = { tone: "info" | "success" | "error"; text: string } | null;
@@ -34,6 +34,8 @@ const narrativeFields = [
   { key: "impact", label: "Impact", hint: "What improved as a result." },
   { key: "learning", label: "Learning", hint: "What you would carry into future work." },
 ] as const;
+
+const jobLabels = new Map(experience.map((entry) => [entry.id, entry.organization]));
 
 const statusStyles = {
   info: "text-muted",
@@ -84,6 +86,20 @@ export default function AdminPage() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [status, setStatus] = useState<Status>(null);
   const [pending, setPending] = useState(false);
+  const [search, setSearch] = useState("");
+  const [jobFilter, setJobFilter] = useState("");
+
+  const visibleEntries = useMemo(() => {
+    const term = search.trim().toLowerCase();
+    return entries
+      .filter((entry) => !jobFilter || entry.experienceId === jobFilter)
+      .filter(
+        (entry) =>
+          !term ||
+          [entry.title, entry.category, ...(entry.technologies ?? [])].some((value) => value.toLowerCase().includes(term))
+      )
+      .sort((a, b) => b.date.localeCompare(a.date));
+  }, [entries, search, jobFilter]);
 
   useEffect(() => {
     if (!auth) return;
@@ -320,38 +336,90 @@ export default function AdminPage() {
         </div>
       </form>
 
-      <div className="mt-8 space-y-3">
-        {entries.map((entry) => (
-          <article
-            key={entry.id}
-            className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-border bg-surface/40 p-4"
-          >
-            <div>
-              <p className="font-medium text-text">{entry.title}</p>
-              <p className="text-sm text-muted">
-                {entry.date} · {entry.category}
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <button
-                onClick={() => editEntry(entry)}
-                className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs text-primary"
+      <section aria-labelledby="entries-heading" className="mt-10">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 id="entries-heading" className="font-display text-2xl text-text">
+              Entries
+            </h2>
+            <p className="mt-1 text-sm text-muted">
+              Showing {visibleEntries.length} of {entries.length}
+            </p>
+          </div>
+          <div className="flex w-full flex-wrap gap-3 sm:w-auto">
+            <input
+              type="search"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Search title, category or technology"
+              aria-label="Search entries"
+              className="field sm:w-72"
+            />
+            <select
+              value={jobFilter}
+              onChange={(event) => setJobFilter(event.target.value)}
+              aria-label="Filter by job"
+              className="field sm:w-48"
+            >
+              <option value="">All jobs</option>
+              {experience.map((entry) => (
+                <option key={entry.id} value={entry.id}>
+                  {entry.organization}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="mt-4 space-y-3">
+          {visibleEntries.length === 0 && (
+            <p className="rounded-xl border border-dashed border-border p-6 text-center text-sm text-muted">
+              No entries match these filters.
+            </p>
+          )}
+          {visibleEntries.map((entry) => {
+            const isSeed = engineeringJournal.some((item) => item.id === entry.id);
+            return (
+              <article
+                key={entry.id}
+                className={cn(
+                  "flex flex-wrap items-center justify-between gap-4 rounded-xl border bg-surface/40 p-4",
+                  editingId === entry.id ? "border-primary/60" : "border-border"
+                )}
               >
-                Edit
-              </button>
-              {!engineeringJournal.some((item) => item.id === entry.id) && (
-                <button
-                  onClick={() => removeEntry(entry.id)}
-                  disabled={pending}
-                  className="rounded-full border border-red-400/30 bg-red-400/10 px-3 py-1.5 text-xs text-red-300 disabled:opacity-60"
-                >
-                  Delete
-                </button>
-              )}
-            </div>
-          </article>
-        ))}
-      </div>
+                <div className="min-w-0">
+                  <p className="font-medium text-text">{entry.title}</p>
+                  <p className="text-sm text-muted">
+                    {formatJournalDate(entry.date)} · {entry.category} · {jobLabels.get(entry.experienceId) ?? "Unassigned"}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  {isSeed && (
+                    <span className="rounded-full border border-border px-2.5 py-1 text-[10px] uppercase tracking-[0.15em] text-muted">
+                      Seed
+                    </span>
+                  )}
+                  <button
+                    onClick={() => editEntry(entry)}
+                    className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs text-primary"
+                  >
+                    Edit
+                  </button>
+                  {!isSeed && (
+                    <button
+                      onClick={() => removeEntry(entry.id)}
+                      disabled={pending}
+                      className="rounded-full border border-red-400/30 bg-red-400/10 px-3 py-1.5 text-xs text-red-300 disabled:opacity-60"
+                    >
+                      Delete
+                    </button>
+                  )}
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
     </div>
   );
 }
