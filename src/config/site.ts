@@ -310,6 +310,26 @@ export const experience: ExperienceEntry[] = [
 // ============================================================================
 export const engineeringJournal: JournalEntryData[] = [
   {
+    id: "journal-2026-10-27",
+    experienceId: "infotech",
+    date: "2026-10-27",
+    title: "Sign-up Linking and Mobile Backend",
+    category: "National ID (Fayda) Integration",
+    context:
+      "Let users verify with Fayda at sign-up and finish registering later, and extended the flow to the Flutter mobile app.",
+    problem:
+      "Verification results are short-lived by design, but people often come back much later to finish registering. On mobile, the result had to get from the browser back into the app securely, without a separate provider setup.",
+    investigation:
+      "Looked at how results expire and how the existing web flow could hand control back to a native app.",
+    solution:
+      "Added a way to link a completed verification to the user's account once they confirm their sign-up, so they can finish later and only ever see their own result. For mobile I reused the existing web flow and added a secure handover back into the app instead of building a second integration. Also brought the implementation in line with the provider's latest integration guide.",
+    impact:
+      "Users can verify once and register whenever they're ready, on web or mobile. 127 automated tests passing, and the mobile changes checked on the dev database.",
+    learning:
+      "Reusing one well-secured flow across platforms beats building a second one. The handover between them is the tricky part, so that's where the design time should go.",
+    technologies: ["Java", "Spring Boot", "OAuth 2.0", "Deep Linking", "Flutter", "Oracle SQL"],
+  },
+  {
     id: "journal-2026-10-26",
     experienceId: "infotech",
     date: "2026-10-26",
