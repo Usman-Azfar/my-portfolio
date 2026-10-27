@@ -83,6 +83,7 @@ export default function AdminPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [draft, setDraft] = useState(emptyEntry);
+  const [baseline, setBaseline] = useState(emptyEntry);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [status, setStatus] = useState<Status>(null);
   const [pending, setPending] = useState(false);
@@ -100,6 +101,17 @@ export default function AdminPage() {
       )
       .sort((a, b) => b.date.localeCompare(a.date));
   }, [entries, search, jobFilter]);
+
+  const isDirty = JSON.stringify(draft) !== JSON.stringify(baseline);
+
+  useEffect(() => {
+    if (!isDirty) return;
+    const onBeforeUnload = (event: BeforeUnloadEvent) => event.preventDefault();
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [isDirty]);
+
+  const confirmDiscard = () => !isDirty || window.confirm("Discard your unsaved changes?");
 
   useEffect(() => {
     if (!auth) return;
@@ -130,12 +142,16 @@ export default function AdminPage() {
 
   const resetDraft = () => {
     setDraft(emptyEntry);
+    setBaseline(emptyEntry);
     setEditingId(null);
   };
 
   const editEntry = ({ id, ...entry }: JournalEntryData) => {
+    if (!confirmDiscard()) return;
+    const loaded = { ...entry, experienceId: entry.experienceId ?? "infotech", technologies: entry.technologies ?? [] };
     setEditingId(id);
-    setDraft({ ...entry, experienceId: entry.experienceId ?? "infotech", technologies: entry.technologies ?? [] });
+    setDraft(loaded);
+    setBaseline(loaded);
     setStatus(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -241,7 +257,9 @@ export default function AdminPage() {
           <p className="mt-2 text-sm text-muted">Signed in as {user.email}</p>
         </div>
         <button
-          onClick={() => auth && signOut(auth)}
+          onClick={() => {
+            if (auth && confirmDiscard()) signOut(auth);
+          }}
           className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-primary hover:text-primary"
         >
           Sign out
@@ -328,10 +346,24 @@ export default function AdminPage() {
             {editingId ? "Update entry" : "Add entry"}
           </button>
           {editingId && (
-            <button type="button" onClick={resetDraft} className="rounded-full border border-border px-5 py-2 text-sm text-muted">
+            <button
+              type="button"
+              onClick={() => confirmDiscard() && resetDraft()}
+              className="rounded-full border border-border px-5 py-2 text-sm text-muted"
+            >
               Cancel
             </button>
           )}
+          {!editingId && isDirty && (
+            <button
+              type="button"
+              onClick={() => confirmDiscard() && resetDraft()}
+              className="rounded-full border border-border px-5 py-2 text-sm text-muted"
+            >
+              Clear
+            </button>
+          )}
+          {isDirty && <span className="text-xs text-muted">Unsaved changes</span>}
           <StatusMessage status={status} />
         </div>
       </form>
