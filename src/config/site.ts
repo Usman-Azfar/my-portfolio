@@ -310,6 +310,26 @@ export const experience: ExperienceEntry[] = [
 // ============================================================================
 export const engineeringJournal: JournalEntryData[] = [
   {
+    id: "journal-2026-10-28",
+    experienceId: "infotech",
+    date: "2026-10-28",
+    title: "Developer Documentation and Design Review",
+    category: "National ID (Fayda) Integration",
+    context:
+      "Wrote the integration guide the mobile team needed for the new Fayda flow, and reviewed the revised plan for enforcing verified identities in account records.",
+    problem:
+      "The mobile team had to test a browser-to-app redirect before the provider-side mobile setup was in place, and testing on physical devices needed some non-obvious workarounds. The enforcement plan also had to cover cases the first draft missed.",
+    investigation:
+      "Checked each point of the revised plan against the code.",
+    solution:
+      "Wrote a step-by-step mobile guide covering the API contract, the handover back into the app, error and cancellation handling, and how to test locally on Android and iOS. Then went through the revised enforcement plan point by point, checked each decision against the code, and recorded what was out of scope and why.",
+    impact:
+      "The mobile team could build and test without waiting on us, and enforcement work started the next day from a plan everyone had agreed on.",
+    learning:
+      "Docs are part of the deliverable. Explaining a flow clearly enough for another team to follow is a good way to find the gaps in it.",
+    technologies: ["Technical Writing", "REST API Design", "Deep Linking", "Android/iOS Testing"],
+  },
+  {
     id: "journal-2026-10-27",
     experienceId: "infotech",
     date: "2026-10-27",
