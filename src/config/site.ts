@@ -310,6 +310,26 @@ export const experience: ExperienceEntry[] = [
 // ============================================================================
 export const engineeringJournal: JournalEntryData[] = [
   {
+    id: "journal-2026-10-29",
+    experienceId: "infotech",
+    date: "2026-10-29",
+    title: "Identity Enforcement and Duplicate Prevention",
+    category: "National ID (Fayda) Integration",
+    context:
+      "Made account saves respect verified identity: lock verified details like legal name, prevent duplicate accounts for the same person, and keep that working through the broker approval workflow.",
+    problem:
+      "Account data goes through several existing save paths, each with its own transaction behaviour. The checks had to hold up even when saves happen at the same time, and a failure halfway through couldn't leave records out of step.",
+    investigation:
+      "Used the save-path map from the 23rd to see where each path starts and finishes its transaction.",
+    solution:
+      "Enforced uniqueness in the database itself rather than relying on application checks alone. Wrapped the existing saves in a single transaction so an account and its identity link are always written together or not at all, and made sure the link follows the record correctly through approval and rejection.",
+    impact:
+      "Verified details are now protected and duplicate identities are blocked at the database level. 152 tests passing locally and 64 integration tests passing against the dev database, with no test data left behind.",
+    learning:
+      "Put the rules that matter where they can't be bypassed. A database constraint holds up better than application code, and wrapping the legacy saves was safer than rewriting them.",
+    technologies: ["Java", "Spring Boot", "Spring Transactions", "JPA/Hibernate", "JDBC", "Oracle SQL"],
+  },
+  {
     id: "journal-2026-10-28",
     experienceId: "infotech",
     date: "2026-10-28",
