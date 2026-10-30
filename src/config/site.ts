@@ -310,6 +310,26 @@ export const experience: ExperienceEntry[] = [
 // ============================================================================
 export const engineeringJournal: JournalEntryData[] = [
   {
+    id: "journal-2026-10-30",
+    experienceId: "infotech",
+    date: "2026-10-30",
+    title: "Related Persons and Account Limits",
+    category: "National ID (Fayda) Integration",
+    context:
+      "Extended Fayda verification to joint account holders and beneficiaries, and added a new business rule on account limits.",
+    problem:
+      "The existing code rewrites joint-holder and beneficiary records on every update, so a verification link stored the usual way would be lost on the next save. The new limit also had to stay correct when an account's details changed.",
+    investigation:
+      "Read through how joint holders and beneficiaries get saved, which is where the rewrite-on-update pattern showed up.",
+    solution:
+      "Stored each person's verification in a way that survives those updates, and added checks so the same person can't appear twice on one account. Enforced the new limit in the database, and wrote a handoff doc so the UI team could integrate without guessing.",
+    impact:
+      "Everyone on an account can now be identity-verified, not just the main holder. 178 local tests and all the related integration suites passed against the dev database.",
+    learning:
+      "Check how legacy code actually saves data before building on it. The rewrite-on-update pattern would have quietly broken the obvious design.",
+    technologies: ["Java", "Spring Boot", "JPA/Hibernate", "Oracle SQL", "Technical Documentation"],
+  },
+  {
     id: "journal-2026-10-29",
     experienceId: "infotech",
     date: "2026-10-29",
