@@ -36,7 +36,7 @@ This is the source code for my personal portfolio. It's built as a research and 
 | **Experience** | Professional roles and a live engineering journal of real problems solved on the job |
 | **Research** | *HelmX*, a multimodal AI smart helmet for road safety (bachelor's thesis, accepted) |
 | **Projects** | Marlin, HelmX, CampusCore, MoneyMate and an 8086 register debugger, each with a detail view |
-| **Courses & Certifications** | DeepLearning.AI, AMD AI Academy and Google certificates with inline previews |
+| **Courses & Certifications** | AWS Certified Solutions Architect - Associate with a verification code, plus DeepLearning.AI, AMD AI Academy and Google certificates with inline previews |
 | **Leadership & Achievements** | Teaching, co-founding Aetarix, community work and competition results |
 
 ## Features
@@ -117,6 +117,7 @@ The site is deployed on **Vercel** at **[my-portfolio-usman-0a4c.vercel.app](htt
 ## Editing content
 
 - **Portfolio content and theme:** [`src/config/site.ts`](src/config/site.ts)
+- **Featured certification:** `featuredCertification` in [`src/config/site.ts`](src/config/site.ts)
 - **Courses and certifications:** [`src/components/certifications/Certifications.tsx`](src/components/certifications/Certifications.tsx), with files in `public/documents/certificates/`
 - **Engineering journal:** the `/admin` editor (when Firebase is configured)
 

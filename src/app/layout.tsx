@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     "Edge AI",
     "Dependable AI",
     "Software Engineer",
+    "AWS Certified Solutions Architect",
     "PUCIT",
     "HelmX",
   ],
