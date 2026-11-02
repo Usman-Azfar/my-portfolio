@@ -310,6 +310,26 @@ export const experience: ExperienceEntry[] = [
 // ============================================================================
 export const engineeringJournal: JournalEntryData[] = [
   {
+    id: "journal-2026-11-02",
+    experienceId: "infotech",
+    date: "2026-11-02",
+    title: "Integration Testing and Support",
+    category: "National ID (Fayda) Integration",
+    context:
+      "Helped the frontend team hook the new screens up to the identity and account features, and tested the full flows end to end on the dev environment.",
+    problem:
+      "Things that pass automated tests can still break once a real UI sends real requests: a missing field, a different data shape, steps in an unexpected order. Several of the rules depend on account type, so each combination had to be run through the actual screens.",
+    investigation:
+      "Checked the database after each scenario to confirm what had been recorded.",
+    solution:
+      "Went through the main account-opening and approval scenarios with the frontend team. After each one I checked the database to confirm everything was saved as designed. Questions from the team went back into the handoff doc.",
+    impact:
+      "The new features are confirmed working through the real UI. The testing also raised a few questions about the business rules, which fed into the next requirement.",
+    learning:
+      "Testing alongside the people who use your API is its own kind of testing. Real requests show up assumptions that unit tests never question.",
+    technologies: ["Java", "Spring Boot", "Oracle SQL", "Postman", "Browser DevTools"],
+  },
+  {
     id: "journal-2026-10-30",
     experienceId: "infotech",
     date: "2026-10-30",
