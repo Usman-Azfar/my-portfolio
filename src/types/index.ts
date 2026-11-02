@@ -168,6 +168,17 @@ export interface ProjectEntry {
   featured?: boolean;
 }
 
+export interface CertificationCredential {
+  title: string;
+  issuer: string;
+  label: string;
+  status: string;
+  activeSince: string; // ISO date, e.g. "2026-06-17"
+  expiresOn: string; // ISO date, e.g. "2029-06-17"
+  verificationUrl: string;
+  verificationCode: string;
+}
+
 export interface LeadershipEntry {
   id: string;
   category: string;

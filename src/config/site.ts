@@ -1,6 +1,7 @@
 import type {
   AboutConfig,
   AchievementsConfig,
+  CertificationCredential,
   EducationEntry,
   ExperienceEntry,
   FooterConfig,
@@ -603,6 +604,20 @@ export const projects: ProjectEntry[] = [
   },
 ];
 // ============================================================================
+// FEATURED CERTIFICATION
+// ============================================================================
+export const featuredCertification: CertificationCredential = {
+  title: "AWS Certified Solutions Architect - Associate",
+  issuer: "Amazon Web Services",
+  label: "International Certification",
+  status: "Active",
+  activeSince: "2026-06-17",
+  expiresOn: "2029-06-17",
+  verificationUrl: "https://cp.certmetrics.com/amazon/en/public/verify/credential",
+  verificationCode: "b5f73e5355da404ab9fd8a6ce0b69977",
+};
+
+// ============================================================================
 // LEADERSHIP & SERVICE
 // ============================================================================
 export const leadership: LeadershipEntry[] = [
@@ -780,6 +795,7 @@ export const siteConfig = {
   research,
   publications,
   projects,
+  featuredCertification,
   leadership,
   achievements,
   about,
