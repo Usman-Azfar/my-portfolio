@@ -1,8 +1,7 @@
 # Project Memory
 
-Running log of context, decisions, and open items for the Usman Azfar portfolio site. This is
-project-local documentation (not an AI assistant memory store) — update it as work progresses so
-anyone (human or AI) picking this up later has the "why," not just the "what."
+Running log of context, decisions, and open items for the Usman Azfar portfolio site. Update it as
+work progresses so anyone picking this up later has the "why," not just the "what."
 
 ## Origin
 
