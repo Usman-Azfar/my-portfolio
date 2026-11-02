@@ -12,7 +12,7 @@ import { ProjectModal } from "./ProjectModal";
 export function Projects() {
   const [active, setActive] = useState<ProjectEntry | null>(null);
   const orderedProjects = [...projects].sort((a, b) => {
-    const order = { marlin: 0, openboxes: 1, helmx: 2, campuscore: 3, moneymate: 4, "8086-debugger": 5 };
+    const order = { helmx: 0, marlin: 1, openboxes: 2, campuscore: 3, moneymate: 4, "8086-debugger": 5 };
     return (order[a.id as keyof typeof order] ?? 99) - (order[b.id as keyof typeof order] ?? 99);
   });
 
