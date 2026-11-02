@@ -76,6 +76,8 @@ const certifications: CertificationCard[] = [
   {
     title: "AWS Cloud Computing Certification",
     provider: "NAVTTC · 3 months",
+    file: "navttc-aws-cloud-computing.jpg",
+    type: "image",
     description:
       "Cloud infrastructure, virtualization, networking, storage, security, and core AWS services.",
   },
