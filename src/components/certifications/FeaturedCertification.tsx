@@ -45,6 +45,25 @@ export function FeaturedCertification() {
           </div>
 
           <div className="rounded-2xl border border-border/80 bg-white/[0.03] p-5">
+            {credential.image && (
+              <a
+                href={credential.image}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${credential.title} verification record`}
+                className="mb-5 block overflow-hidden rounded-xl border border-border/80 bg-white transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-primary"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={credential.image}
+                  alt={`${credential.title} verification record`}
+                  width={1063}
+                  height={594}
+                  loading="lazy"
+                  className="h-auto w-full"
+                />
+              </a>
+            )}
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-dim">Verification code</p>
             <div className="mt-2 flex items-center justify-between gap-3">
               <code className="min-w-0 break-all font-mono text-sm text-text">{credential.verificationCode}</code>

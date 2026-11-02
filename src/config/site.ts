@@ -615,6 +615,7 @@ export const featuredCertification: CertificationCredential = {
   expiresOn: "2029-06-17",
   verificationUrl: "https://cp.certmetrics.com/amazon/en/public/verify/credential",
   verificationCode: "b5f73e5355da404ab9fd8a6ce0b69977",
+  image: "/documents/certificates/aws-solutions-architect-associate.png",
 };
 
 // ============================================================================

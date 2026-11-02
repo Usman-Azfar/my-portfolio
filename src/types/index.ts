@@ -177,6 +177,7 @@ export interface CertificationCredential {
   expiresOn: string; // ISO date, e.g. "2029-06-17"
   verificationUrl: string;
   verificationCode: string;
+  image?: string;
 }
 
 export interface LeadershipEntry {
