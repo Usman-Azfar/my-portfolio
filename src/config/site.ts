@@ -750,7 +750,7 @@ export const achievements: AchievementsConfig = {
   competitive: [
     { label: "99.6 Percentile", detail: "HEC National Skills Competency Test", documentUrl: "/documents/NSCT_cropped.pdf" },
     { label: "Top 50 of 15,000", detail: "NSTC-17 Qualifier", documentUrl: "/documents/Stem-ezremove.png" },
-    { label: "13th of 100 Teams", detail: "ICPC Regional Programming Contest — Round 1" },
+    { label: "30th of 208 Teams", detail: "ICPC Regional Programming Contest — Round 1", documentUrl: "/documents/ICPC_2024_Scoreboard.pdf#page=2" },
     { label: "Runner-up", detail: "COMSATS Speed Programming Competition", documentUrl: "/documents/Comsats.jpeg" },
     { label: "ISSB Qualifier — Air Force", detail: "Qualified for the Air Force selection process through disciplined evaluation and interview stages", documentUrl: "/documents/ISSB_cropped_cropped.pdf" },
   ],
