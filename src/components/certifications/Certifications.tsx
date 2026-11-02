@@ -2,6 +2,7 @@ import { ArrowRight, BookOpen, ExternalLink } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { FeaturedCertification } from "./FeaturedCertification";
 
 type CertificationCard = {
   title: string;
@@ -106,8 +107,10 @@ export function Certifications() {
         <SectionHeading
           index="07"
           title="Courses & Certifications"
-          description="Selected coursework and credentials in algorithms, machine learning, and AI."
+          description="Selected coursework and credentials in cloud architecture, algorithms, machine learning, and AI."
         />
+
+        <FeaturedCertification />
 
         <div className="relative">
           <div className="projects-scrollbar flex items-stretch snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
