@@ -476,6 +476,37 @@ export const projects: ProjectEntry[] = [
     featured: true,
   },
   {
+    id: "openboxes",
+    slug: "openboxes-open-source-contribution",
+    title: "OpenBoxes — Open-Source Contribution",
+    description:
+      "Authored and merged a new REST API endpoint for OpenBoxes, an open-source supply-chain and inventory platform, exposing a user's roles with facility-level filtering. While investigating a follow-on issue, I also found and responsibly reported a security weakness in the platform's user-role API.",
+    problem:
+      "OpenBoxes had no API for fetching all the roles assigned to a user, and role data in a multi-facility inventory system has to respect facility scope and access control. Changes to a widely used open-source codebase also have to fit its existing architecture and pass maintainer review.",
+    solution:
+      "Built the endpoint with DTO and mapper layering and role-based access control, so callers can fetch a user's roles and filter them by facility. Covered it with full unit and HTTP integration tests, and worked with maintainers through issue discussion and code review until it was merged as PR #6221.",
+    technologies: [
+      "Java",
+      "Grails",
+      "Spring Boot",
+      "Hibernate",
+      "REST APIs",
+      "Role-Based Access Control",
+      "Unit & Integration Testing",
+      "Responsible Disclosure",
+    ],
+    architecture:
+      "The endpoint uses DTO and mapper layering to keep the API response separate from the platform's Java/Grails, Spring Boot and Hibernate domain model, with role-based access control and facility-level filtering applied to the returned roles. It is covered by unit tests and HTTP integration tests.",
+    results: [
+      "Merged into the OpenBoxes develop branch as PR #6221",
+      "Identified a security weakness in the user-role API and reported it privately through a GitHub Security Advisory, working with maintainers on confirmation and remediation rather than disclosing it publicly",
+      "Followed the project's contribution and security-disclosure guidelines throughout, collaborating with maintainers via issue discussion and code review",
+    ],
+    images: [],
+    videos: [],
+    githubUrl: "https://github.com/openboxes/openboxes/pull/6221",
+  },
+  {
     id: "helmx",
     slug: "helmx",
     title: "HelmX - AI-Powered Smart Helmet for Road Safety",
