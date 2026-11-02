@@ -92,7 +92,7 @@ export function ProjectModal({ project, onClose }: { project: ProjectEntry | nul
               ))}
             </div>
 
-            {(project.images?.length || project.videos?.length) && (
+            {Boolean(project.images?.length || project.videos?.length) && (
               <div className="mt-6 flex flex-col gap-4">
                 <MediaGallery images={project.images} />
                 {project.videos?.map((v) => (

@@ -97,7 +97,7 @@ export function JournalEntry({
                 <p className="mt-1 text-sm text-secondary">{entry.technologies.join(" · ")}</p>
               </div>
 
-              {(entry.images?.length || entry.videos?.length) && (
+              {Boolean(entry.images?.length || entry.videos?.length) && (
                 <div>
                   <p className={journalLabelStyles}>Media:</p>
                   <div className="mt-3 flex flex-col gap-4">

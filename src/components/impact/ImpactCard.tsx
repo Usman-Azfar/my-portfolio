@@ -36,7 +36,7 @@ export function ImpactCard({ entry, delay }: { entry: LeadershipEntry; delay: nu
         </div>
       )}
 
-      {(entry.images?.length || entry.videos?.length) && (
+      {Boolean(entry.images?.length || entry.videos?.length) && (
         <div className="relative mt-4 flex flex-col gap-3">
           <MediaGallery images={entry.images} />
           {entry.videos?.map((v) => (
