@@ -88,6 +88,12 @@ const certifications: CertificationCard[] = [
       "Cloud infrastructure, virtualization, networking, storage, security, and core AWS services.",
   },
   {
+    title: "AWS Cloud Practitioner Essentials",
+    provider: "AWS Training & Certification",
+    file: "aws-cloud-practitioner-essentials.pdf",
+    type: "pdf",
+  },
+  {
     title: "Graphic Design Certification",
     provider: "DigiSkills · Government of Pakistan",
     description:
@@ -108,6 +114,7 @@ const certificationOrder = [
   "AI Agents 101: MCP and Open Source Inference",
   "AI Agents 201: Design to Deployment",
   "AWS Cloud Computing Certification",
+  "AWS Cloud Practitioner Essentials",
   "Graphic Design Certification",
 ];
 const orderedCertifications = [...certifications].sort(
