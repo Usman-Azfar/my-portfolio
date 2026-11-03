@@ -310,6 +310,26 @@ export const experience: ExperienceEntry[] = [
 // ============================================================================
 export const engineeringJournal: JournalEntryData[] = [
   {
+    id: "journal-2026-11-03",
+    experienceId: "infotech",
+    date: "2026-11-03",
+    title: "Client Onboarding Validation",
+    category: "National ID (Fayda) Integration",
+    context:
+      "Looked into a broker approval in online client onboarding that was failing with HTTP 400, and reviewed the existing account rules so the business could decide on the next changes.",
+    problem:
+      "At first it looked like the new identity checks might be the cause. The logs said otherwise: the screen was sending data in a slightly different shape than the API expected. I also needed to give the business a clear, evidence-backed picture of the current rules.",
+    investigation:
+      "Confirmed the root cause in the server logs and reproduced the failing request locally.",
+    solution:
+      "Confirmed the cause from the logs and reproduced it locally. Wrote a small reusable fix on the backend so the API accepts the format the screen sends while still rejecting malformed input, with no change to responses or other screens. For the review, I traced the existing validation and summarised what the business needs to decide before the new rules are built.",
+    impact:
+      "Broker approvals are unblocked without waiting for a frontend release. The fix went in with 10 new tests and the full suite of 189 passed.",
+    learning:
+      "Check the logs before blaming the newest code. Accepting small variations in input while staying strict about bad data gets rid of a whole class of integration bugs.",
+    technologies: ["Java", "Spring Boot", "Jackson", "JUnit", "Oracle SQL"],
+  },
+  {
     id: "journal-2026-11-02",
     experienceId: "infotech",
     date: "2026-11-02",
