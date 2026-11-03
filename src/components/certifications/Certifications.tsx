@@ -44,6 +44,12 @@ const certifications: CertificationCard[] = [
     type: "pdf",
   },
   {
+    title: "Sequence Models",
+    provider: "Coursera · DeepLearning.AI",
+    file: "sequence-models.pdf",
+    type: "pdf",
+  },
+  {
     title: "Supervised Machine Learning",
     provider: "Coursera · DeepLearning.AI",
     file: "supervised-machine-learning.pdf",
@@ -97,6 +103,7 @@ const certificationOrder = [
   "Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization",
   "Structuring Machine Learning Projects",
   "Convolutional Neural Networks",
+  "Sequence Models",
   "Introduction to Large Language Models",
   "AI Agents 101: MCP and Open Source Inference",
   "AI Agents 201: Design to Deployment",
