@@ -57,13 +57,13 @@ export function JournalEntry({
           >
             <div className="space-y-4 pb-7 pl-8 pr-2">
               <div className="grid w-full grid-cols-1 gap-3 text-sm text-muted sm:grid-cols-2 sm:text-base">
-                <div className="flex items-center gap-2">
+                <div className="flex items-baseline gap-2">
                   <span className={journalLabelStyles}>Project:</span>
-                  <span className="min-w-0 flex-1 truncate">{entry.category}</span>
+                  <span className="min-w-0 flex-1 break-words">{entry.category}</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-baseline gap-2">
                   <span className={journalLabelStyles}>Module:</span>
-                  <span className="min-w-0 flex-1 truncate">{entry.title}</span>
+                  <span className="min-w-0 flex-1 break-words">{entry.title}</span>
                 </div>
               </div>
 
