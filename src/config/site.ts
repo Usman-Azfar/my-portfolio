@@ -313,8 +313,8 @@ export const engineeringJournal: JournalEntryData[] = [
     id: "journal-2026-11-03",
     experienceId: "infotech",
     date: "2026-11-03",
-    title: "Client Onboarding Validation",
-    category: "National ID (Fayda) Integration",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
     context:
       "Looked into a broker approval in online client onboarding that was failing with HTTP 400, and reviewed the existing account rules so the business could decide on the next changes.",
     problem:
@@ -333,8 +333,8 @@ export const engineeringJournal: JournalEntryData[] = [
     id: "journal-2026-11-02",
     experienceId: "infotech",
     date: "2026-11-02",
-    title: "Integration Testing and Support",
-    category: "National ID (Fayda) Integration",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
     context:
       "Helped the frontend team hook the new screens up to the identity and account features, and tested the full flows end to end on the dev environment.",
     problem:
@@ -353,8 +353,8 @@ export const engineeringJournal: JournalEntryData[] = [
     id: "journal-2026-10-30",
     experienceId: "infotech",
     date: "2026-10-30",
-    title: "Related Persons and Account Limits",
-    category: "National ID (Fayda) Integration",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
     context:
       "Extended Fayda verification to joint account holders and beneficiaries, and added a new business rule on account limits.",
     problem:
@@ -373,8 +373,8 @@ export const engineeringJournal: JournalEntryData[] = [
     id: "journal-2026-10-29",
     experienceId: "infotech",
     date: "2026-10-29",
-    title: "Identity Enforcement and Duplicate Prevention",
-    category: "National ID (Fayda) Integration",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
     context:
       "Made account saves respect verified identity: lock verified details like legal name, prevent duplicate accounts for the same person, and keep that working through the broker approval workflow.",
     problem:
@@ -393,8 +393,8 @@ export const engineeringJournal: JournalEntryData[] = [
     id: "journal-2026-10-28",
     experienceId: "infotech",
     date: "2026-10-28",
-    title: "Developer Documentation and Design Review",
-    category: "National ID (Fayda) Integration",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
     context:
       "Wrote the integration guide the mobile team needed for the new Fayda flow, and reviewed the revised plan for enforcing verified identities in account records.",
     problem:
@@ -413,8 +413,8 @@ export const engineeringJournal: JournalEntryData[] = [
     id: "journal-2026-10-27",
     experienceId: "infotech",
     date: "2026-10-27",
-    title: "Sign-up Linking and Mobile Backend",
-    category: "National ID (Fayda) Integration",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
     context:
       "Let users verify with Fayda at sign-up and finish registering later, and extended the flow to the Flutter mobile app.",
     problem:
@@ -433,8 +433,8 @@ export const engineeringJournal: JournalEntryData[] = [
     id: "journal-2026-10-26",
     experienceId: "infotech",
     date: "2026-10-26",
-    title: "Notifications and Staging Validation",
-    category: "National ID (Fayda) Integration",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
     context:
       "Added confirmation emails for verified identities across the three onboarding paths (self sign-up, online registration and broker-assisted registration), then ran the real endpoints against staging for the first time.",
     problem:
@@ -453,8 +453,8 @@ export const engineeringJournal: JournalEntryData[] = [
     id: "journal-2026-10-23",
     experienceId: "infotech",
     date: "2026-10-23",
-    title: "Codebase Analysis and Design",
-    category: "National ID (Fayda) Integration",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
     context:
       "Before enforcing verified identities in account records, I mapped how client data actually gets created, updated, approved and rejected across the existing onboarding paths.",
     problem:
@@ -473,8 +473,8 @@ export const engineeringJournal: JournalEntryData[] = [
     id: "journal-2026-10-22",
     experienceId: "infotech",
     date: "2026-10-22",
-    title: "Database Migration Quality",
-    category: "National ID (Fayda) Integration",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
     context:
       "Made the Fayda database scripts safe to run in every environment, and built an integration suite to prove the code behaves the same on Oracle as on the in-memory test database.",
     problem:
@@ -493,8 +493,8 @@ export const engineeringJournal: JournalEntryData[] = [
     id: "journal-2026-10-21",
     experienceId: "infotech",
     date: "2026-10-21",
-    title: "Verification Endpoints and Persistence",
-    category: "National ID (Fayda) Integration",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
     context:
       "Turned yesterday's proof of concept into real backend endpoints for the web frontend: start a verification, complete it, and fetch the verified result.",
     problem:
@@ -513,8 +513,8 @@ export const engineeringJournal: JournalEntryData[] = [
     id: "journal-2026-10-20",
     experienceId: "infotech",
     date: "2026-10-20",
-    title: "OpenID Connect Security Foundation",
-    category: "National ID (Fayda) Integration",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
     context:
       "Started on the Fayda integration, so investors on our back-office platform can prove their identity with Ethiopia's national digital ID during sign-up and account registration. Today was about getting the security groundwork in place.",
     problem:
