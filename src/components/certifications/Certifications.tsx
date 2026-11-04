@@ -1,4 +1,5 @@
-import { ArrowRight, BookOpen, ExternalLink } from "lucide-react";
+import { ArrowRight, BookOpen, ExternalLink, ShieldCheck } from "lucide-react";
+import { person } from "@/config/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -10,6 +11,8 @@ type CertificationCard = {
   file?: string;
   type?: "pdf" | "image";
   description?: string;
+  // The issuer's lookup needs a personal ID, so visitors ask for it by email instead.
+  verificationUrl?: string;
 };
 
 const certifications: CertificationCard[] = [
@@ -86,6 +89,7 @@ const certifications: CertificationCard[] = [
     type: "image",
     description:
       "Cloud infrastructure, virtualization, networking, storage, security, and core AWS services.",
+    verificationUrl: "https://nsis.navttc.gov.pk/verify-certificate",
   },
   {
     title: "AWS Cloud Practitioner Essentials",
@@ -122,6 +126,16 @@ const orderedCertifications = [...certifications].sort(
 );
 
 const certificateRoot = "/documents/certificates";
+
+function credentialRequestUrl(title: string) {
+  const params = new URLSearchParams({
+    view: "cm",
+    fs: "1",
+    to: person.email,
+    su: `Verification credentials: ${title}`,
+  });
+  return `https://mail.google.com/mail/?${params}`;
+}
 
 export function Certifications() {
   return (
@@ -196,16 +210,44 @@ export function Certifications() {
                     {certification.description && (
                       <p className="mt-2 text-xs leading-relaxed text-muted/90">{certification.description}</p>
                     )}
+                    {certification.verificationUrl && (
+                      <p className="mt-2 text-xs leading-relaxed text-muted/90">
+                        For verification credentials,{" "}
+                        <a
+                          href={credentialRequestUrl(certification.title)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary underline-offset-2 hover:underline"
+                        >
+                          email me
+                        </a>
+                        .
+                      </p>
+                    )}
 
-                    {fileUrl && (
-                      <a
-                        href={fileUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-medium text-primary transition-colors hover:text-text"
-                      >
-                        View certificate <ExternalLink size={14} />
-                      </a>
+                    {(fileUrl || certification.verificationUrl) && (
+                      <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-1 pt-4 text-sm font-medium text-primary">
+                        {fileUrl && (
+                          <a
+                            href={fileUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 transition-colors hover:text-text"
+                          >
+                            View certificate <ExternalLink size={14} />
+                          </a>
+                        )}
+                        {certification.verificationUrl && (
+                          <a
+                            href={certification.verificationUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 transition-colors hover:text-text"
+                          >
+                            Verify <ShieldCheck size={14} />
+                          </a>
+                        )}
+                      </div>
                     )}
                   </article>
                 </Reveal>
