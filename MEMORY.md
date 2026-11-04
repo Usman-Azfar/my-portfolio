@@ -24,7 +24,7 @@ explicitly *not* a generic dev portfolio. Key constraints from that brief:
   types separate from content lets a future CMS/DB integration type-check against the same
   shapes without touching UI code.
 - Instead of Supabase, **Firebase** (Auth + Firestore) was adopted, but scoped narrowly: only
-  the "Engineering Journal" section (daily dev-log entries under the InfoTech experience) is
+  the "Engineering Journal" section (daily dev-log entries under the InfoTech Group experience) is
   dynamic. `useJournalEntries` (`src/lib/journal.ts`) reads Firestore live and falls back to the
   seeded `engineeringJournal` array in `site.ts` if Firebase isn't configured or errors out —
   so the public site never hard-depends on Firebase being up.

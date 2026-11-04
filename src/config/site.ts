@@ -221,7 +221,7 @@ export const experience: ExperienceEntry[] = [
   {
     id: "infotech",
     role: "Associate Software Engineer — Java Spring Boot",
-    organization: "InfoTech",
+    organization: "InfoTech Group",
     period: "March 2026 — Present",
     primary: true,
     overview:
@@ -306,7 +306,7 @@ export const experience: ExperienceEntry[] = [
 
 // ============================================================================
 // DAILY ENGINEERING JOURNAL
-// Day-by-day notes from InfoTech, newest first.
+// Day-by-day notes from InfoTech Group, newest first.
 // ============================================================================
 export const engineeringJournal: JournalEntryData[] = [
   {
@@ -942,7 +942,7 @@ export const achievements: AchievementsConfig = {
 // ============================================================================
 export const about: AboutConfig = {
   whoIAm:
-    "I'm a Software engineer and researcher from Lahore, Pakistan, have completed my BS in Computer Science at PUCIT, University of the Punjab,Lahore and currently working as an Associate Software Engineer at Infotech. I'm drawn to problems where getting the engineering right actually matters to someone's safety or livelihood.",
+    "I'm a Software engineer and researcher from Lahore, Pakistan, have completed my BS in Computer Science at PUCIT, University of the Punjab,Lahore and currently working as an Associate Software Engineer at InfoTech Group. I'm drawn to problems where getting the engineering right actually matters to someone's safety or livelihood.",
   whatIBuild:
     "Production backend systems for financial infrastructure, AI-powered automation platforms, and edge AI systems like HelmX—where success isn’t just about model accuracy, but about making intelligence reliable, efficient, and deployable in the real world, even on a tiny footprint.",
   whatIResearch:
@@ -953,7 +953,7 @@ export const about: AboutConfig = {
     "Outside of engineering, I’m usually chasing a new view in the north, experimenting with a new cuisine in the kitchen, or finding a competitive game of football or badminton.",
   interests: ["Travelling", "Exploring new places and cultures", "Sports", "Cooking"],
   currently: {
-    building: "Production backend systems at InfoTech, alongside Aetarix—an early-stage software and AI automation venture I co-founded.",
+    building: "Production backend systems at InfoTech Group, alongside Aetarix—an early-stage software and AI automation venture I co-founded.",
     researching: "Trustworthy AI for high-consequence, edge-deployed systems, extending my HelmX thesis work into the broader challenge of reliable AI in the real world.",
   },
 };
