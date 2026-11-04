@@ -41,8 +41,6 @@ explicitly *not* a generic dev portfolio. Key constraints from that brief:
   (2026-08-18 → 2026-08-21) have real titles/categories/dates but `context`/`problem`/
   `investigation`/`solution`/`impact`/`learning` are still `"[ADD CONTENT]"`. Intended to be
   filled in via `/admin` as real daily notes are recorded, not hand-edited in `site.ts`.
-- **Missing LinkedIn:** `social.linkedin` is `undefined` in `site.ts`, flagged inline as
-  `[ADD CONTENT]`.
 - **No media yet:** `images`/`videos` arrays are empty for the `research.featured` (HelmX) entry
   and for every `projects` entry in `site.ts`.
 
@@ -53,6 +51,7 @@ explicitly *not* a generic dev portfolio. Key constraints from that brief:
   Vercel at `https://my-portfolio-usman-0a4c.vercel.app`.
 - `siteUrl` is defined once in `src/config/site.ts` and used by the layout metadata, sitemap and
   robots; `/admin` is disallowed for crawlers.
+- `social.linkedin` is set, so the footer shows the LinkedIn link.
 
 ## Decisions worth remembering
 

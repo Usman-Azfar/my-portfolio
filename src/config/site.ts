@@ -963,7 +963,7 @@ export const about: AboutConfig = {
 // ============================================================================
 export const social: SocialConfig = {
   github: "https://github.com/Usman-Azfar/",
-  linkedin: undefined, // [ADD CONTENT] — add LinkedIn profile URL
+  linkedin: "https://www.linkedin.com/in/usman-azfar-75867a20b",
   email: person.email,
   cv: person.resumeUrl,
 };
