@@ -840,7 +840,7 @@ export const leadership: LeadershipEntry[] = [
   {
     id: "aetarix-co-founder",
     category: "Entrepreneurship",
-    title: "Co-Founder & Software Engineer — Aetarix",
+    title: "Co-Founder & Technology Contributor — Aetarix",
     role: "Custom Software & AI Automation Company | Aetarix",
     date: "Early-stage venture",
     description:
