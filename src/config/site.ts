@@ -676,7 +676,7 @@ export const projects: ProjectEntry[] = [
     slug: "openboxes-open-source-contribution",
     title: "OpenBoxes — Open-Source Contribution",
     description:
-      "Authored and merged a new REST API endpoint for OpenBoxes, an open-source supply-chain and inventory platform, exposing a user's roles with facility-level filtering. While investigating a follow-on issue, I also found and responsibly reported a security weakness in the platform's user-role API.",
+      "Authored and merged a new REST API endpoint for OpenBoxes, an open-source supply-chain and inventory platform, exposing a user's roles with facility-level filtering. While investigating a follow-on issue, I also found a high-severity access-control vulnerability, reported it through a private GitHub Security Advisory, and confirmed it with a runtime proof of concept; I'm credited as the reporter and am coordinating the fix with the maintainers.",
     problem:
       "OpenBoxes had no API for fetching all the roles assigned to a user, and role data in a multi-facility inventory system has to respect facility scope and access control. Changes to a widely used open-source codebase also have to fit its existing architecture and pass maintainer review.",
     solution:
@@ -689,13 +689,16 @@ export const projects: ProjectEntry[] = [
       "REST APIs",
       "Role-Based Access Control",
       "Unit & Integration Testing",
+      "Security Research",
       "Responsible Disclosure",
     ],
     architecture:
       "The endpoint uses DTO and mapper layering to keep the API response separate from the platform's Java/Grails, Spring Boot and Hibernate domain model, with role-based access control and facility-level filtering applied to the returned roles. It is covered by unit tests and HTTP integration tests.",
     results: [
       "Merged into the OpenBoxes develop branch as PR #6221",
-      "Identified a security weakness in the user-role API and reported it privately through a GitHub Security Advisory, working with maintainers on confirmation and remediation rather than disclosing it publicly",
+      "Reported a high-severity access-control vulnerability privately through a GitHub Security Advisory and was credited as the reporter",
+      "Confirmed the issue with a runtime proof of concept in an isolated, throwaway test environment, documented the root cause, and proposed a fix for the maintainers",
+      "Technical details stay private until a patch is released, in line with coordinated disclosure",
       "Followed the project's contribution and security-disclosure guidelines throughout, collaborating with maintainers via issue discussion and code review",
     ],
     images: [],
