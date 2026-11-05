@@ -64,7 +64,7 @@ export function Research() {
                 </span>
               </div>
 
-              <div className="mt-4 grid gap-4 sm:grid-cols-3">
+              <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 <div>
                   <p className="font-mono text-[10px] tracking-[0.2em] text-mutedDim">TITLE</p>
                   <p className="mt-1 text-sm leading-relaxed text-muted">{thesis?.title ?? featured.title}</p>
@@ -73,6 +73,12 @@ export function Research() {
                   <p className="font-mono text-[10px] tracking-[0.2em] text-mutedDim">AUTHORS</p>
                   <p className="mt-1 text-sm leading-relaxed text-muted">{thesis?.authors ?? "Usman Azfar, et al."}</p>
                 </div>
+                {thesis?.supervisor && (
+                  <div>
+                    <p className="font-mono text-[10px] tracking-[0.2em] text-mutedDim">SUPERVISOR</p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted">{thesis.supervisor}</p>
+                  </div>
+                )}
                 <div>
                   <p className="font-mono text-[10px] tracking-[0.2em] text-mutedDim">RESEARCH AREAS</p>
                   <p className="mt-1 text-sm leading-relaxed text-muted">
@@ -117,7 +123,7 @@ export function Research() {
             <h3 className="font-display text-xl font-medium tracking-tight sm:text-2xl">Publications</h3>
           </Reveal>
           <div className="flex flex-col gap-6">
-            {publications.map((publication) => (
+            {publications.filter((publication) => publication !== thesis).map((publication) => (
               <PublicationCard key={publication.id} publication={publication} />
             ))}
           </div>
