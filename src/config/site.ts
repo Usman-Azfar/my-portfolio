@@ -292,7 +292,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     id: "ta-os",
-    role: "Teaching Assistant — Operating Systems & Data Structures",
+    role: "Teaching Assistant — Operating Systems and Data Structures & Algorithms",
     organization: "PUCIT",
     period: "12 months",
     overview:
@@ -852,9 +852,9 @@ export const leadership: LeadershipEntry[] = [
   {
     id: "ta-academics",
     category: "Academics",
-    title: "Teaching Assistant — Operating Systems & Data Structures & Algorithms",
-    role: "Teaching Assistant",
-    date: "PUCIT",
+    title: "Teaching Assistant — Operating Systems and Data Structures & Algorithms",
+    role: "Teaching Assistant · PUCIT",
+    date: "12 months",
     description:
       "Mentored students in core systems and DSA concepts through lab support, guided problem-solving, and one-to-one debugging assistance to build stronger academic confidence and implementation skills.",
     peopleImpacted: "160+ students",
@@ -939,9 +939,9 @@ export const leadership: LeadershipEntry[] = [
 // ============================================================================
 export const achievements: AchievementsConfig = {
   academic: [
-    { label: "1st in BSCS Batch", detail: "PUCIT" },
-    { label: "Among Top 5 in Class", detail: "FSc (Pre-Medical)" },
-    { label: "2nd position in district", detail: "Matriculation" },
+    { label: "1st in BSCS Batch", detail: "PUCIT — CGPA 3.93/4.00, University Gold Medal expected" },
+    { label: "98.5% in FSc (Pre-Medical)", detail: "1083/1100, among the top 5 in class" },
+    { label: "2nd position in district", detail: "Matriculation — 1080/1100 (98.2%)" },
   ],
   competitive: [
     { label: "99.6 Percentile", detail: "HEC National Skills Competency Test", documentUrl: "/documents/NSCT_cropped.pdf" },
