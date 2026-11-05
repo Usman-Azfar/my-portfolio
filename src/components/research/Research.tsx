@@ -112,7 +112,6 @@ export function Research() {
           </div>
         </Reveal>
 
-        {/*
         <div className="mt-16">
           <Reveal className="mb-6 text-center">
             <h3 className="font-display text-xl font-medium tracking-tight sm:text-2xl">Publications</h3>
@@ -123,7 +122,6 @@ export function Research() {
             ))}
           </div>
         </div>
-        */}
       </Container>
     </section>
   );
