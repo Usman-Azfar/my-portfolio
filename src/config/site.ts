@@ -225,11 +225,12 @@ export const experience: ExperienceEntry[] = [
     period: "March 2026 — Present",
     primary: true,
     overview:
-      "Engineer production-grade backend systems for Marlin, an enterprise brokerage and financial-markets platform, building and optimizing financial workflows with Java, Spring Boot, REST APIs, and relational databases.",
+      "Engineer production-grade backend systems for Marlin, an enterprise brokerage and financial-markets platform, building and optimizing financial workflows with Java, Spring Boot, REST APIs, and relational databases — including the integration of Ethiopia's Fayda national digital ID into client onboarding.",
      responsibilities: [
-    "Design and develop production financial modules that support core brokerage and market operations.",
+    "Design, develop, and optimize enterprise-scale financial modules — Client Onboarding, Money Market, Cash Management, Fund Withdrawal, Rollover, and Termination — that support core brokerage and market operations.",
     "Engineer end-to-end transaction workflows spanning trade processing, confirmation, cash management, settlement, and client operations.",
     "Build secure backend services with authentication and authorization controls, integrating business logic with relational data systems.",
+    "Integrated the Fayda national digital ID (MOSIP eSignet, OpenID Connect) into Marlin's sign-up, online and broker-assisted onboarding, and mobile app: a server-side Authorization Code flow with PKCE and private_key_jwt client authentication, signed-token and UserInfo verification against JWKS, and enforcement of verified identity data, including joint holders and beneficiaries.",
     "Automate and optimize operational workflows for cash settlement, reporting, and client communications to reduce manual intervention and processing overhead.",
   ],
     systems: [
@@ -244,6 +245,7 @@ export const experience: ExperienceEntry[] = [
       "Client Email Workflows",
       "Funds Withdrawal & Deposit",
       "Authentication / Authorization",
+      "Fayda National ID Integration",
     ],
     impact: [
       "Reduced operational processing time by approximately 30–35% through backend workflow optimization and automation.",
@@ -252,13 +254,16 @@ export const experience: ExperienceEntry[] = [
       "Automated previously operationally intensive processes, reducing manual intervention across critical brokerage workflows.",
       "Contributed to end-to-end trade lifecycle processing, from transaction execution and confirmation through cash settlement.",
       "Improved consistency and reliability of financial operations by translating complex business workflows into structured backend services.",
-      "Built and integrated reporting and client-communication workflows to streamline operational visibility and follow-up."
+      "Built and integrated reporting and client-communication workflows to streamline operational visibility and follow-up.",
+      "Brought national-ID verification to client onboarding on web and mobile, with verified identity data enforced for main holders, joint holders, and beneficiaries."
     ],
     technologies: [
     "Java",
     "Spring Boot",
     "REST APIs",
+    "OpenID Connect / OAuth 2.0",
     "SQL",
+    "Oracle",
     "Relational Databases",
     "JasperReports",
     "SVN",
