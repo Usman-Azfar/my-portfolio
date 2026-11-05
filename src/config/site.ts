@@ -605,7 +605,7 @@ export const publications: PublicationEntry[] = [
     links: [
       { label: "Author preprint (PDF)", href: "/documents/research/HelmX_IEEE_Sensors_Preprint.pdf" },
       { label: "Research artifacts (Zenodo v1.1.0)", href: "https://doi.org/10.5281/zenodo.23770989" },
-      { label: "Source code", href: "https://github.com/Usman-Azfar/HelmX-AI-Powered-Smart-Helmet" },
+      { label: "Source code", href: "https://github.com/Usman-Azfar/HelmX-AI-Powered-Smart-Helmet/tree/crash-detection" },
     ],
     statusNote:
       "Author preprint, submitted for peer review and not yet accepted or published by the journal. The Zenodo DOI identifies the research software and data, not the article.",
