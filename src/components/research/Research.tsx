@@ -24,6 +24,7 @@ const DETAILS: { key: keyof typeof research.featured; label: string }[] = [
 
 export function Research() {
   const { featured } = research;
+  const thesis = publications.find((publication) => publication.id === "helmx-thesis");
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -59,23 +60,23 @@ export function Research() {
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="font-mono text-[10px] tracking-[0.2em] text-primary/70">PUBLICATION STATUS</span>
                 <span className="rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 font-mono text-[10px] text-accent">
-                  {publications[0]?.status ?? "Status pending"}
+                  {thesis?.status ?? "Status pending"}
                 </span>
               </div>
 
               <div className="mt-4 grid gap-4 sm:grid-cols-3">
                 <div>
                   <p className="font-mono text-[10px] tracking-[0.2em] text-mutedDim">TITLE</p>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{publications[0]?.title ?? featured.title}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-muted">{thesis?.title ?? featured.title}</p>
                 </div>
                 <div>
                   <p className="font-mono text-[10px] tracking-[0.2em] text-mutedDim">AUTHORS</p>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{publications[0]?.authors ?? "Usman Azfar, et al."}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-muted">{thesis?.authors ?? "Usman Azfar, et al."}</p>
                 </div>
                 <div>
                   <p className="font-mono text-[10px] tracking-[0.2em] text-mutedDim">RESEARCH AREAS</p>
                   <p className="mt-1 text-sm leading-relaxed text-muted">
-                    {publications[0]?.researchArea?.join(" · ") ?? "Dependable AI · Edge AI · Public Safety"}
+                    {thesis?.researchArea?.join(" · ") ?? "Dependable AI · Edge AI · Public Safety"}
                   </p>
                 </div>
               </div>
