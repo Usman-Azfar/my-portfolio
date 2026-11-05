@@ -149,6 +149,10 @@ export interface PublicationEntry {
   doi?: string;
   pdfUrl?: string;
   citation?: string;
+  venueNote?: string; // e.g. "Manuscript submitted to IEEE Sensors Journal · November 2026"
+  highlights?: ResearchMetric[];
+  links?: { label: string; href: string }[];
+  statusNote?: string; // plain-language caveat shown under the links
 }
 
 export interface ProjectEntry {
