@@ -8,10 +8,12 @@ import { Certifications } from "@/components/certifications/Certifications";
 import { Leadership } from "@/components/impact/Leadership";
 import { Achievements } from "@/components/achievements/Achievements";
 import { About } from "@/components/about/About";
+import { PersonJsonLd } from "@/components/seo/PersonJsonLd";
 
 export default function Home() {
   return (
     <>
+      <PersonJsonLd />
       <Hero />
       <About />
       <Education />
