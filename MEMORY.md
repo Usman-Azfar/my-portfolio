@@ -48,7 +48,7 @@ explicitly *not* a generic dev portfolio. Key constraints from that brief:
 
 - `Saudia_modified.pdf` now exists in `public/documents/`, so the elementary result link works.
 - The project is under git and pushed to GitHub (`Usman-Azfar/my-portfolio`), deployed on
-  Vercel at `https://my-portfolio-usman-0a4c.vercel.app`.
+  Vercel at `https://www.usmanazfar.dev` (custom domain; `usmanazfar.dev` redirects there, and the original vercel.app address still works).
 - `siteUrl` is defined once in `src/config/site.ts` and used by the layout metadata, sitemap and
   robots; `/admin` is disallowed for crawlers.
 - `social.linkedin` is set, so the footer shows the LinkedIn link.

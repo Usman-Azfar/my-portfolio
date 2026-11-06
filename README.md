@@ -6,7 +6,7 @@
 
 *I build dependable software for high-consequence systems — from financial platforms to applied AI.*
 
-[![Live Site](https://img.shields.io/badge/Live_Site-my--portfolio--usman--0a4c.vercel.app-7CC7FF?style=for-the-badge&logo=vercel&logoColor=white)](https://my-portfolio-usman-0a4c.vercel.app)
+[![Live Site](https://img.shields.io/badge/Live_Site-usmanazfar.dev-7CC7FF?style=for-the-badge&logo=vercel&logoColor=white)](https://www.usmanazfar.dev)
 
 ![Next.js](https://img.shields.io/badge/Next.js_16-000000?style=flat-square&logo=nextdotjs&logoColor=white)
 ![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)
@@ -16,7 +16,7 @@
 ![Firebase](https://img.shields.io/badge/Firebase-DD2C00?style=flat-square&logo=firebase&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Deployed_on_Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-**[View the live portfolio →](https://my-portfolio-usman-0a4c.vercel.app)**
+**[View the live portfolio →](https://www.usmanazfar.dev)**
 
 </div>
 
@@ -108,7 +108,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 
 ## Deployment
 
-The site is deployed on **Vercel** at **[my-portfolio-usman-0a4c.vercel.app](https://my-portfolio-usman-0a4c.vercel.app)**.
+The site is deployed on **Vercel** at **[usmanazfar.dev](https://www.usmanazfar.dev)**.
 
 1. Import the repository into Vercel. It detects Next.js automatically.
 2. *(Optional)* Add the five Firebase variables under **Settings → Environment Variables**.
@@ -133,6 +133,6 @@ The site is deployed on **Vercel** at **[my-portfolio-usman-0a4c.vercel.app](htt
 
 **Usman Azfar** · Lahore, Pakistan
 
-[Live Portfolio](https://my-portfolio-usman-0a4c.vercel.app) · [GitHub](https://github.com/Usman-Azfar) · [Email](mailto:usmanazfarshafiq@gmail.com)
+[Live Portfolio](https://www.usmanazfar.dev) · [GitHub](https://github.com/Usman-Azfar) · [Email](mailto:usmanazfarshafiq@gmail.com)
 
 </div>
