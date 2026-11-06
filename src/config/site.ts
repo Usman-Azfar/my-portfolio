@@ -1034,9 +1034,9 @@ export const siteConfig = {
   social,
   footer,
   seo: {
-    title: "Usman Azfar — AI Engineer, Researcher & Systems Builder",
+    title: "Usman Azfar — Software Engineer & AI Researcher",
     description:
-      "Personal portfolio of Usman Azfar — AI engineer, researcher and systems builder working across dependable AI, software engineering, edge systems and social impact.",
+      "Usman Azfar is a software engineer and AI researcher in Lahore, Pakistan: backend engineer at InfoTech Group, HelmX edge-AI researcher, AWS Certified, PUCIT.",
   },
 };
 
