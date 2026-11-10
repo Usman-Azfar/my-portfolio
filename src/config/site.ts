@@ -315,6 +315,86 @@ export const experience: ExperienceEntry[] = [
 // ============================================================================
 export const engineeringJournal: JournalEntryData[] = [
   {
+    id: "journal-2026-11-10",
+    experienceId: "infotech",
+    date: "2026-11-10",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
+    context:
+      "Gave the frontend each investor's Fayda status at login so it can decide whether to prompt for verification without an extra API call, then tested verification of existing clients end to end with the QA and frontend teams.",
+    problem:
+      "Login sessions are created and refreshed in several places, and the new lookup must never stop someone from logging in. In testing, a client can only be verified once, so the team needed a way to run the same scenario again and again.",
+    investigation:
+      "Traced every place a session is issued or refreshed, and checked each test client's data before handing it to QA.",
+    solution:
+      "Added the status to the login response and recalculated it on every session refresh, designed so a lookup problem never blocks a login. For testing, wrote a reset script that returns a test client and everyone on their account to Pending, touching only the data verification had changed. I dry-ran it in a rolled-back transaction before handing it over.",
+    impact:
+      "The frontend can drop a status call from every login. The first live verification of an existing client succeeded on the development environment, and QA can now repeat the flow as often as needed. The full suite of 280 automated tests and 125 integration tests passed.",
+    learning:
+      "Build the tools that make a feature testable as part of the feature. A safe, repeatable reset script did more for testing speed than any single fix.",
+    technologies: ["Java", "Spring Boot", "Spring Security", "Oracle SQL (PL/SQL)", "JUnit"],
+  },
+  {
+    id: "journal-2026-11-06",
+    experienceId: "infotech",
+    date: "2026-11-06",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
+    context:
+      "Let clients, joint holders and beneficiaries who registered before the integration verify their identity with Fayda now, and showed their status in the web screens and the mobile app.",
+    problem:
+      "Unlike a new registration, there's no save step afterwards: the record already exists, so it has to be updated safely the moment verification completes. An investor and their broker could act on the same account at once, and showing one status for an account is harder than it looks when it holds several people.",
+    investigation:
+      "Mapped who should be allowed to verify whom across online clients, offline clients, joint holders and beneficiaries before writing any code.",
+    solution:
+      "Added a verification flow for existing clients with clear permission rules. When verification completes, a single transaction updates the person's identity details, checks the account for duplicates and closes the request; any failure rolls everything back. The status is derived from existing data rather than a new column, and the mobile lists combine everyone on an account into one status: Pending if anyone still needs to verify, Verified only when all have.",
+    impact:
+      "Existing clients can now verify without re-registering, on web and mobile. 252 automated tests passed, plus 33 new integration tests against the development database that create and clean up their own data.",
+    learning:
+      "When a status can be derived from data you already have, derive it. Storing a second copy creates a new way for the two to drift apart.",
+    technologies: ["Java", "Spring Boot", "Spring Transactions", "JDBC", "Oracle SQL", "JUnit"],
+  },
+  {
+    id: "journal-2026-11-05",
+    experienceId: "infotech",
+    date: "2026-11-05",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
+    context:
+      "Allowed clients, joint holders and beneficiaries verified through Fayda to be saved without an ID number, since Fayda doesn't provide one, while leaving every other ID type exactly as it was.",
+    problem:
+      "The ID number was used in places that had nothing to do with onboarding, including features that group a person's accounts together and beneficiary validation. Some downstream processes also genuinely need the number and can't simply skip it.",
+    investigation:
+      "Searched for every reader of the field, not just the screens that write it, and confirmed which paths were already safe before changing anything.",
+    solution:
+      "Changed only what needed it: for Fayda records, the features that identify the same person now rely on the verified identity instead of the ID number, and beneficiary validation skips the number check for Fayda beneficiaries only. The processes that still need the number were documented as open items for the business.",
+    impact:
+      "Fayda records can be saved without an ID number, and no other ID type changed. 217 automated tests and 92 integration tests passed, with no leftover test data.",
+    learning:
+      "Search for every reader of a field before changing its rules. The risky uses were far from where the change was requested.",
+    technologies: ["Java", "Spring Boot", "JPA/Hibernate", "Oracle SQL", "JUnit", "H2"],
+  },
+  {
+    id: "journal-2026-11-04",
+    experienceId: "infotech",
+    date: "2026-11-04",
+    title: "Client Onboarding Validation (National ID (Fayda) Integration)",
+    category: "Marlin ESX (Ethiopia)",
+    context:
+      "Fixed the gaps the frontend team found while testing online applications and broker approval with Fayda-verified investors, and removed an old database rule that conflicted with the new account-limit design.",
+    problem:
+      "The application details didn't tell the screen whether an investor was verified, and showed no user details for investors who had already been approved. Approval also depended on an optional field some screens didn't send, and an older database rule blocked a valid second account for the same person.",
+    investigation:
+      "Followed each failing screen back to the API response and compared the old database rule with the new account-limit design.",
+    solution:
+      "Made the verification state part of every application read, and built the user details from the client record for approved investors. Approval now relies on the data itself instead of an optional flag. I removed the conflicting rule with a reviewed script and a matching rollback, leaving one place responsible for preventing duplicates.",
+    impact:
+      "The frontend shows the right verification state for pending and approved investors, approvals work from every screen, and a valid second account is no longer blocked. The script was recorded as a deployment step for the other environments.",
+    learning:
+      "When a rule moves to a new place, remove the old version of it. Two mechanisms enforcing slightly different rules will eventually disagree, and the older one is usually the one nobody remembers.",
+    technologies: ["Java", "Spring Boot", "JPA/Hibernate", "Oracle SQL", "REST APIs"],
+  },
+  {
     id: "journal-2026-11-03",
     experienceId: "infotech",
     date: "2026-11-03",
