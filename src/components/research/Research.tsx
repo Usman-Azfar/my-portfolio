@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 import { research, publications } from "@/config/site";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -86,6 +86,24 @@ export function Research() {
                   </p>
                 </div>
               </div>
+
+              {thesis?.venueNote && <p className="mt-4 text-xs italic leading-relaxed text-muted">{thesis.venueNote}</p>}
+
+              {thesis?.links && thesis.links.length > 0 && (
+                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-border/80 pt-4 text-sm">
+                  {thesis.links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-primary hover:underline"
+                    >
+                      {link.label} <ExternalLink size={13} />
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
 
             {isOpen && (

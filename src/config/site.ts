@@ -617,10 +617,17 @@ export const publications: PublicationEntry[] = [
   },
   {
     id: "helmx-thesis",
-    title: "HelmX: AI-Powered Smart Helmet for Road Safety",
-    authors: "Usman Azfar, Abdul Hanan, Hamza Ahmad, and Awais Imtiaz",
+    title:
+      "HelmX: An AI-Powered Smart Helmet — Edge Crash Detection, Driver-State Monitoring and Connected Rider Services",
+    authors: "Usman Azfar (Group Leader), Hamza Ahmad, Abdul Hanan, and Awais Imtiaz",
     supervisor: "Dr. Tayyaba Tariq",
     status: "Bachelor's Thesis — Accepted",
+    venueNote:
+      "Final Year Project Report, BS Computer Science, Department of Computer Science, FCIT, University of the Punjab, Lahore · Session 2025–2026",
+    links: [
+      { label: "Thesis (PDF)", href: "/documents/research/HelmX_Bachelor_Thesis_2026.pdf" },
+      { label: "Source code", href: "https://github.com/Usman-Azfar/HelmX-AI-Powered-Smart-Helmet" },
+    ],
     abstract:
       "Describes HelmX as an integrated motorcycle-safety project spanning inertial-sensor crash detection, camera-based drowsiness monitoring, edge AI, embedded sensors, and rider-facing alert and communication features. Its system scope includes voice interaction, GPS/GSM emergency workflows, an Android companion for rider analytics and helmet customization, and a web platform for product information, build configuration, and Stripe test-mode checkout. Research claims are reported by subsystem and evaluation dataset rather than presented as a single accuracy figure for the complete system.",
     researchArea: [
