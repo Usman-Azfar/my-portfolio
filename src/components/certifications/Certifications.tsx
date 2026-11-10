@@ -11,9 +11,14 @@ type CertificationCard = {
   file?: string;
   type?: "pdf" | "image";
   description?: string;
-  // The issuer's lookup needs a personal ID, so visitors ask for it by email instead.
   verificationUrl?: string;
+  // The issuer's lookup needs a personal ID, so visitors ask for it by email instead.
+  credentialsOnRequest?: boolean;
 };
+
+const mlSpecializationUrl = "https://www.coursera.org/account/accomplishments/specialization/UPCQLOFMU8JY";
+const deepLearningSpecializationUrl =
+  "https://www.coursera.org/account/accomplishments/specialization/LD3C9LQEAZJB";
 
 const certifications: CertificationCard[] = [
   {
@@ -21,48 +26,56 @@ const certifications: CertificationCard[] = [
     provider: "Coursera",
     file: "advanced-algorithms.pdf",
     type: "pdf",
+    verificationUrl: mlSpecializationUrl,
   },
   {
     title: "Neural Networks and Deep Learning",
     provider: "Coursera · DeepLearning.AI",
     file: "neural-networks-and-deep-learning.pdf",
     type: "pdf",
+    verificationUrl: deepLearningSpecializationUrl,
   },
   {
     title: "Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization",
     provider: "Coursera · DeepLearning.AI",
     file: "improving-deep-neural-networks.pdf",
     type: "pdf",
+    verificationUrl: deepLearningSpecializationUrl,
   },
   {
     title: "Structuring Machine Learning Projects",
     provider: "Coursera · DeepLearning.AI",
     file: "structuring-machine-learning-projects.pdf",
     type: "pdf",
+    verificationUrl: deepLearningSpecializationUrl,
   },
   {
     title: "Convolutional Neural Networks",
     provider: "Coursera · DeepLearning.AI",
     file: "convolutional-neural-networks.pdf",
     type: "pdf",
+    verificationUrl: deepLearningSpecializationUrl,
   },
   {
     title: "Sequence Models",
     provider: "Coursera · DeepLearning.AI",
     file: "sequence-models.pdf",
     type: "pdf",
+    verificationUrl: deepLearningSpecializationUrl,
   },
   {
     title: "Supervised Machine Learning",
     provider: "Coursera · DeepLearning.AI",
     file: "supervised-machine-learning.pdf",
     type: "pdf",
+    verificationUrl: mlSpecializationUrl,
   },
   {
     title: "Unsupervised Learning",
     provider: "Coursera · DeepLearning.AI",
     file: "unsupervised-learning.pdf",
     type: "pdf",
+    verificationUrl: mlSpecializationUrl,
   },
   {
     title: "AI Agents 101: MCP and Open Source Inference",
@@ -90,6 +103,7 @@ const certifications: CertificationCard[] = [
     description:
       "Cloud infrastructure, virtualization, networking, storage, security, and core AWS services.",
     verificationUrl: "https://nsis.navttc.gov.pk/verify-certificate",
+    credentialsOnRequest: true,
   },
   {
     title: "AWS Cloud Practitioner Essentials",
@@ -210,7 +224,7 @@ export function Certifications() {
                     {certification.description && (
                       <p className="mt-2 text-xs leading-relaxed text-muted/90">{certification.description}</p>
                     )}
-                    {certification.verificationUrl && (
+                    {certification.credentialsOnRequest && (
                       <p className="mt-2 text-xs leading-relaxed text-muted/90">
                         For verification credentials,{" "}
                         <a
