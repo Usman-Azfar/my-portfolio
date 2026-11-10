@@ -674,10 +674,10 @@ export const publications: PublicationEntry[] = [
     status: "Submitted · Nov 2026",
     venueNote: "Manuscript submitted to IEEE Sensors Journal, November 3, 2026",
     abstract:
-      "Studies whether a learned crash-detection policy keeps its offline behaviour once it runs continuously on a helmet-mounted IMU and a Raspberry Pi 4. The paper examines how sensor acquisition, temporal validity, operating-system scheduling, causal preprocessing, and INT8 quantization affect model decisions, and introduces a reproducible evaluation procedure that separates successful sensor communication from temporally valid samples and usable inference opportunities.",
+      "Studies whether a learned crash-detection policy keeps its offline behaviour once it runs continuously on a helmet-mounted IMU and a Raspberry Pi 4. The paper measures class-conditional decision fidelity, temporal validity, and decision-opportunity coverage across sensor acquisition, operating-system scheduling, causal preprocessing, and INT8 quantization, isolates a train/serve feature discrepancy, and checks the procedure against three simple baseline policies. The result is a reproducible method that separates successful sensor communication from temporally valid samples and usable decisions.",
     highlights: [
       { value: "267,891", label: "Error-free I²C reads in a 90-min run" },
-      { value: "99.65%", label: "Offline decision agreement after deployment" },
+      { value: "99.65%", label: "Overall decision agreement (90.21% on crash-like windows)" },
       { value: "80.99%", label: "Decision coverage in the same 90-min run" },
     ],
     researchArea: [
@@ -688,7 +688,7 @@ export const publications: PublicationEntry[] = [
       "Deployment Validation",
     ],
     links: [
-      { label: "Author preprint (PDF)", href: "/documents/research/HelmX_IEEE_Sensors_Preprint.pdf" },
+      { label: "Author preprint, updated Nov 2026 (PDF)", href: "/documents/research/HelmX_IEEE_Sensors_Preprint.pdf" },
       { label: "Research artifacts (Zenodo v1.1.0)", href: "https://doi.org/10.5281/zenodo.23770989" },
       { label: "Source code", href: "https://github.com/Usman-Azfar/HelmX-AI-Powered-Smart-Helmet/tree/crash-detection" },
     ],
