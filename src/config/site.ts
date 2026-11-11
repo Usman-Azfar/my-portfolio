@@ -230,7 +230,7 @@ export const experience: ExperienceEntry[] = [
     "Design, develop, and optimize enterprise-scale financial modules — Client Onboarding, Money Market, Cash Management, Fund Withdrawal, Rollover, and Termination — that support core brokerage and market operations.",
     "Engineer end-to-end transaction workflows spanning trade processing, confirmation, cash management, settlement, and client operations.",
     "Build secure backend services with authentication and authorization controls, integrating business logic with relational data systems.",
-    "Integrated the Fayda national digital ID (MOSIP eSignet, OpenID Connect) into Marlin's sign-up, online and broker-assisted onboarding, and mobile app: a server-side Authorization Code flow with PKCE and private_key_jwt client authentication, signed-token and UserInfo verification against JWKS, and enforcement of verified identity data, including joint holders and beneficiaries.",
+    "Integrated the Fayda national digital ID (MOSIP eSignet, OpenID Connect) into Marlin's sign-up, online and broker-assisted onboarding, and mobile app: a server-side Authorization Code flow with PKCE and private_key_jwt client authentication, signed-token and UserInfo verification against JWKS, and enforcement of verified identity data, including joint holders and beneficiaries. Extended verification to previously registered clients, joint holders and beneficiaries, with atomic record updates and an account-wide verification status across web, mobile and login.",
     "Automate and optimize operational workflows for cash settlement, reporting, and client communications to reduce manual intervention and processing overhead.",
   ],
     systems: [
