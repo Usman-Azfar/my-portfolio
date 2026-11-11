@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Briefcase, ChevronDown, ChevronUp } from "lucide-react";
+import { Briefcase, ChevronDown, ChevronUp, ShieldCheck } from "lucide-react";
 import { useJournalEntries } from "@/lib/journal";
 import type { ExperienceEntry } from "@/types";
 import { Reveal } from "@/components/ui/Reveal";
@@ -53,6 +53,18 @@ export function ExperienceCard({ entry, delay }: { entry: ExperienceEntry; delay
         </div>
 
         <p className="mt-5 text-sm leading-relaxed text-muted sm:text-base">{entry.overview}</p>
+
+        {entry.credential && (
+          <a
+            href={entry.credential.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+          >
+            <ShieldCheck size={14} />
+            {entry.credential.label}
+          </a>
+        )}
 
         {showJournal && (
           <div className="mt-6 border-t border-border pt-6">

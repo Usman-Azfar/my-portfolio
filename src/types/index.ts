@@ -108,6 +108,7 @@ export interface ExperienceEntry {
   systems?: string[];
   impact: string[];
   technologies: string[];
+  credential?: { label: string; href: string };
 }
 
 export interface ResearchMetric {
