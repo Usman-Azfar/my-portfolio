@@ -67,3 +67,6 @@ Thumbs.db
 # typescript
 *.tsbuildinfo
 
+
+# local working archives (e.g. preprint kits)
+/*.zip
