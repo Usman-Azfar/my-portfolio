@@ -1106,7 +1106,7 @@ export const about: AboutConfig = {
 // SOCIAL
 // ============================================================================
 export const social: SocialConfig = {
-  github: "https://github.com/Usman-Azfar/",
+  github: "https://github.com/Usman-Azfar",
   linkedin: "https://www.linkedin.com/in/usman-azfar-75867a20b",
   email: person.email,
   cv: person.resumeUrl,
