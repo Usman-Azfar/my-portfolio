@@ -814,6 +814,26 @@ export const projects: ProjectEntry[] = [
     githubUrl: "https://github.com/openboxes/openboxes/pull/6221",
   },
   {
+    id: "rust-reference",
+    slug: "rust-reference-open-source-contribution",
+    title: "The Rust Reference — Open-Source Contribution",
+    description:
+      "Fixed an inaccuracy in The Rust Reference, the official specification-style documentation of the Rust language maintained by the Rust project. The section on the boolean type claimed that all primitive types implement Clone, Copy, Sized, Send and Sync, which is not true. The pull request resolves the reported issue and is in review with the maintainers.",
+    problem:
+      "The rule r[type.bool.traits] began with \"Like all primitives\", but slices and str implement none of Clone, Copy or Sized, and raw pointers implement neither Send nor Sync. A specification-style document has to be precise, because readers and tooling rely on each rule meaning exactly what it says.",
+    solution:
+      "Checked each listed trait against the primitive types to confirm the counterexamples reported in issue #2408, then opened PR #2411 to correct the rule. Following a maintainer's review, the rule now states only that the boolean type implements these traits, without generalising to all primitives.",
+    technologies: ["Rust", "Language Specification", "Technical Writing", "mdBook", "Code Review"],
+    results: [
+      "Opened PR #2411 to resolve issue #2408 in rust-lang/reference",
+      "Applied a maintainer's review suggestion; all CI checks (spec build, style and code tests) pass",
+      "Status: open and awaiting merge",
+    ],
+    images: [],
+    videos: [],
+    githubUrl: "https://github.com/rust-lang/reference/pull/2411",
+  },
+  {
     id: "helmx",
     slug: "helmx",
     title: "HelmX - AI-Powered Smart Helmet for Road Safety",
