@@ -843,7 +843,7 @@ export const projects: ProjectEntry[] = [
     slug: "home-assistant-android-open-source-contribution",
     title: "Home Assistant Android — Open-Source Contribution",
     description:
-      "Fixed 12 lint warnings across the phone and Wear OS apps of Home Assistant Android, the official Android client for the open-source home-automation platform. Several screens read text in a way that could leave it stale after a configuration change, such as switching the system language; the fixes move them to configuration-aware APIs. The first pull request (app module) was approved and merged by a maintainer; the follow-up for the Wear OS module, which the maintainer suggested, is in review.",
+      "Fixed 12 lint warnings across the phone and Wear OS apps of Home Assistant Android, the official Android client for the open-source home-automation platform. Several screens read text in a way that could leave it stale after a configuration change, such as switching the system language; the fixes move them to configuration-aware APIs. Both pull requests were approved and merged by maintainers: the app-module fix first, then a follow-up for the Wear OS module that a maintainer suggested.",
     problem:
       "The :app and :wear modules had LocalContextGetResourceValueCall lint warnings (8 and 4) where strings were read through LocalContext.current or context.getString(...). That lookup isn't configuration-aware, so displayed text can go stale when the configuration changes, for example when the user switches the system language.",
     solution:
@@ -851,14 +851,14 @@ export const projects: ProjectEntry[] = [
     technologies: ["Kotlin", "Jetpack Compose", "Android", "Wear OS", "Android Lint", "Code Review"],
     results: [
       "PR #7879 (app module, 8 warnings): approved by a maintainer and merged into main",
-      "PR #7895 (Wear OS module, 4 warnings): opened at the maintainer's suggestion; lint, unit and Wear OS instrumentation checks pass, awaiting review",
+      "PR #7895 (Wear OS module, 4 warnings): opened at the maintainer's suggestion; approved by a maintainer and merged into main",
       "Part of the project's codebase-wide effort to fix linter warnings (issue #5221)",
     ],
     images: [],
     videos: [],
     githubUrl: "https://github.com/home-assistant/android/pulls?q=is%3Apr+author%3AUsman-Azfar",
     openSource: true,
-    contributionStatus: "Merged · Wear OS fix in review",
+    contributionStatus: "Merged · 2 PRs",
   },
   {
     id: "helmx",
