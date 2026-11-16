@@ -843,22 +843,22 @@ export const projects: ProjectEntry[] = [
     slug: "home-assistant-android-open-source-contribution",
     title: "Home Assistant Android — Open-Source Contribution",
     description:
-      "Fixed 8 lint warnings in the app module of the Home Assistant Android companion app, the official Android client for the open-source home-automation platform. Several screens read text in a way that could leave it stale after a configuration change, such as switching the system language; the fix moves them to the configuration-aware API. The pull request was reviewed, approved and merged by a maintainer.",
+      "Fixed 12 lint warnings across the phone and Wear OS apps of Home Assistant Android, the official Android client for the open-source home-automation platform. Several screens read text in a way that could leave it stale after a configuration change, such as switching the system language; the fixes move them to configuration-aware APIs. The first pull request (app module) was approved and merged by a maintainer; the follow-up for the Wear OS module, which the maintainer suggested, is in review.",
     problem:
-      "The :app module had 8 LocalContextGetResourceValueCall lint warnings where strings were read through LocalContext.current.getString(...). That lookup isn't configuration-aware, so displayed text can go stale when the configuration changes, for example when the user switches the system language.",
+      "The :app and :wear modules had LocalContextGetResourceValueCall lint warnings (8 and 4) where strings were read through LocalContext.current or context.getString(...). That lookup isn't configuration-aware, so displayed text can go stale when the configuration changes, for example when the user switches the system language.",
     solution:
-      "Replaced those reads with LocalResources.current.getString(...), the configuration-aware API already used elsewhere in the module. stringResource() couldn't be used because every call sat inside a LaunchedEffect block or a callback, where composable functions can't be invoked. Removed the context where it was only used for these strings, kept it where still needed (for example to start activities), and cleared the fixed entries from the lint baseline.",
-    technologies: ["Kotlin", "Jetpack Compose", "Android", "Android Lint", "Code Review"],
+      "In the app module (PR #7879), replaced those reads with LocalResources.current.getString(...), the configuration-aware API already used elsewhere in the module; stringResource() couldn't be used because every call sat inside a LaunchedEffect block or a callback. In the Wear OS module (PR #7895), the slider labels are now read once at composable scope with stringResource(...) and passed into the callbacks, and a lookup inside a sorting lambda uses LocalResources. Context was kept only where still needed, and the lint baseline was regenerated with Gradle rather than edited by hand.",
+    technologies: ["Kotlin", "Jetpack Compose", "Android", "Wear OS", "Android Lint", "Code Review"],
     results: [
-      "Merged into home-assistant/android main as PR #7879, approved by a maintainer",
-      "Resolved 8 LocalContextGetResourceValueCall warnings in the app module",
+      "PR #7879 (app module, 8 warnings): approved by a maintainer and merged into main",
+      "PR #7895 (Wear OS module, 4 warnings): opened at the maintainer's suggestion; lint, unit and Wear OS instrumentation checks pass, awaiting review",
       "Part of the project's codebase-wide effort to fix linter warnings (issue #5221)",
     ],
     images: [],
     videos: [],
-    githubUrl: "https://github.com/home-assistant/android/pull/7879",
+    githubUrl: "https://github.com/home-assistant/android/pulls?q=is%3Apr+author%3AUsman-Azfar",
     openSource: true,
-    contributionStatus: "Merged",
+    contributionStatus: "Merged · Wear OS fix in review",
   },
   {
     id: "helmx",
