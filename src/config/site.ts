@@ -784,7 +784,7 @@ export const projects: ProjectEntry[] = [
     slug: "openboxes-open-source-contribution",
     title: "OpenBoxes — Open-Source Contribution",
     description:
-      "Authored and merged a new REST API endpoint for OpenBoxes, an open-source supply-chain and inventory platform, exposing a user's roles with facility-level filtering. While investigating a follow-on issue, I also found a high-severity access-control vulnerability, reported it through a private GitHub Security Advisory, and confirmed it with a runtime proof of concept; I'm credited as the reporter and am coordinating the fix with the maintainers.",
+      "Authored and merged a new REST API endpoint for OpenBoxes, an open-source supply-chain and inventory platform, exposing a user's roles with facility-level filtering. While investigating a follow-on issue, I also found a high-severity access-control vulnerability, reported it through a private GitHub Security Advisory, and confirmed it with a runtime proof of concept. I'm credited as the reporter and have submitted a patch with regression tests, which is awaiting maintainer review.",
     problem:
       "OpenBoxes had no API for fetching all the roles assigned to a user, and role data in a multi-facility inventory system has to respect facility scope and access control. Changes to a widely used open-source codebase also have to fit its existing architecture and pass maintainer review.",
     solution:
@@ -805,13 +805,16 @@ export const projects: ProjectEntry[] = [
     results: [
       "Merged into the OpenBoxes develop branch as PR #6221",
       "Reported a high-severity access-control vulnerability privately through a GitHub Security Advisory and was credited as the reporter",
-      "Confirmed the issue with a runtime proof of concept in an isolated, throwaway test environment, documented the root cause, and proposed a fix for the maintainers",
+      "Confirmed the issue with a runtime proof of concept in an isolated, throwaway test environment and documented the root cause",
+      "Submitted a patch with regression tests through the advisory's private fork; it is awaiting maintainer review before release",
       "Technical details stay private until a patch is released, in line with coordinated disclosure",
       "Followed the project's contribution and security-disclosure guidelines throughout, collaborating with maintainers via issue discussion and code review",
     ],
     images: [],
     videos: [],
     githubUrl: "https://github.com/openboxes/openboxes/pull/6221",
+    openSource: true,
+    contributionStatus: "Merged · Security fix in review",
   },
   {
     id: "rust-reference",
@@ -832,6 +835,30 @@ export const projects: ProjectEntry[] = [
     images: [],
     videos: [],
     githubUrl: "https://github.com/rust-lang/reference/pull/2411",
+    openSource: true,
+    contributionStatus: "In review",
+  },
+  {
+    id: "home-assistant",
+    slug: "home-assistant-android-open-source-contribution",
+    title: "Home Assistant Android — Open-Source Contribution",
+    description:
+      "Fixed 8 lint warnings in the app module of the Home Assistant Android companion app, the official Android client for the open-source home-automation platform. Several screens read text in a way that could leave it stale after a configuration change, such as switching the system language; the fix moves them to the configuration-aware API. The pull request was reviewed, approved and merged by a maintainer.",
+    problem:
+      "The :app module had 8 LocalContextGetResourceValueCall lint warnings where strings were read through LocalContext.current.getString(...). That lookup isn't configuration-aware, so displayed text can go stale when the configuration changes, for example when the user switches the system language.",
+    solution:
+      "Replaced those reads with LocalResources.current.getString(...), the configuration-aware API already used elsewhere in the module. stringResource() couldn't be used because every call sat inside a LaunchedEffect block or a callback, where composable functions can't be invoked. Removed the context where it was only used for these strings, kept it where still needed (for example to start activities), and cleared the fixed entries from the lint baseline.",
+    technologies: ["Kotlin", "Jetpack Compose", "Android", "Android Lint", "Code Review"],
+    results: [
+      "Merged into home-assistant/android main as PR #7879, approved by a maintainer",
+      "Resolved 8 LocalContextGetResourceValueCall warnings in the app module",
+      "Part of the project's codebase-wide effort to fix linter warnings (issue #5221)",
+    ],
+    images: [],
+    videos: [],
+    githubUrl: "https://github.com/home-assistant/android/pull/7879",
+    openSource: true,
+    contributionStatus: "Merged",
   },
   {
     id: "helmx",

@@ -171,6 +171,8 @@ export interface ProjectEntry {
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
+  openSource?: boolean; // listed under "Open Source Contributions"
+  contributionStatus?: string; // e.g. "Merged", "In review"
 }
 
 export interface CertificationCredential {
