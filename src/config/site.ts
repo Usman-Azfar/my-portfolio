@@ -861,6 +861,52 @@ export const projects: ProjectEntry[] = [
     contributionStatus: "Merged · 2 PRs",
   },
   {
+    id: "hisaab-ai",
+    slug: "hisaab-ai",
+    title: "Hisaab AI — Evidence-Verified Bookkeeping for Small Shops",
+    description:
+      "A WhatsApp bookkeeping assistant for small informal shops in Pakistan, starting with kiryana (grocery) stores that keep accounts in a paper khata. Owners send voice notes or text in Urdu, Roman Urdu, Punjabi or English, and Hisaab AI turns them into double-entry books — but only posts an entry once independent evidence backs it. It is also a research project, with a paper, a benchmark and pre-registered experiments.",
+    problem:
+      "Small shops track credit (udhaar) and cash in a paper khata and the owner's memory. Most AI bookkeeping tools simply record whatever the owner says, so mistakes, duplicate screenshots and altered receipts end up in the books. Two things make verification hard: copies are not confirmations (three forwards of one screenshot are one source, not three), and every question to the owner costs their time.",
+    solution:
+      "Hisaab treats each message as a claim, not a fact. A claim is posted only when independent evidence supports it — a JazzCash, Easypaisa or Raast payment record, the customer's own confirmation from their registered phone, or a receipt or daily cash count; until then it is shown as unconfirmed and never mixed with confirmed figures. An evidence graph decides which sources are truly independent, and a question selector asks the owner only the questions that can actually change the books.",
+    technologies: [
+      "Python",
+      "Java",
+      "Apache Kafka",
+      "PostgreSQL",
+      "MinIO",
+      "Docker",
+      "NLP",
+      "Event-Driven Architecture",
+      "Double-Entry Accounting",
+      "Research",
+    ],
+    architecture:
+      "Three services communicate only through Kafka events with tested contracts. Intake (Python) receives WhatsApp messages, voice notes, photos, payment webhooks and CSV khata imports, stores evidence tamper-evidently and extracts claims. Verification (Python) builds the evidence graph, determines source independence, applies the posting policy and chooses questions. Ledger (Java) keeps double-entry books from confirmed claims only, with full provenance and an audit trail. Kafka delivery is at-least-once, with idempotent handling and dead-letter queues; evidence is stored in MinIO and books in PostgreSQL.",
+    results: [
+      "Intake: multilingual claim extraction (Urdu, Roman Urdu, Punjabi, English; amounts in digits, words, hazar and lakh), signed WhatsApp and payment-provider webhooks, voice transcription and photo/OCR hooks, and CSV khata import",
+      "Verification: evidence graph and claim state machine, source-independence rules, an amount-banded posting policy, value-of-information question selection, and consent-based customer confirmations",
+      "Ledger: double-entry books with corrections by reversal (never deletion), trial balance, journal export, and an \"explain this balance\" report that traces every rupee to its evidence",
+      "Owner reports on WhatsApp: a customer's account, a whole-shop summary and daily summaries; stock counts with estimated profit, labelled unconfirmed, are in review",
+      "Research paper in preparation: \"Evidence Before Entries: Source-Aware Verification of Financial Claims for Informal Businesses\"",
+      "Research: InformalFinBench, a benchmark of synthetic shop timelines (fake payments, duplicates, altered invoices, ambiguous voice notes), a pre-registered protocol and reproducible run records",
+      "Synthetic results so far: no false claims accepted, versus 8.4% for a baseline that counts copies as independent; about 40% fewer owner questions for the same entries",
+      "Engineering: CI for lint, types and tests in both languages, and a full end-to-end run across all three services on Kafka, PostgreSQL and MinIO",
+    ],
+    roadmap: [
+      "Pilot preparation: deployment guide, monitoring and alerts, and onboarding for the first shops (owner, customers and consent)",
+      "Live integration with WhatsApp Business and payment providers, and real-world data collection after ethics approval",
+      "Calibrate the system on consented real data and test question selection with real owners; report real-world results separately from synthetic ones",
+      "Research: safety under attack (prompt injection, forged evidence) and a probabilistic model of how sources depend on each other",
+      "Product: an LLM-based extractor alongside the rule-based one, better OCR, Punjabi (Shahmukhi) speech recognition, and an app or web view of the books",
+      "Long term: a verifiable, portable business record an owner can take to a bank or lender, with every figure backed by evidence",
+    ],
+    images: [],
+    videos: [],
+    status: "In progress",
+  },
+  {
     id: "helmx",
     slug: "helmx",
     title: "HelmX - AI-Powered Smart Helmet for Road Safety",

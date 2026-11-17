@@ -49,6 +49,11 @@ export function ProjectModal({ project, onClose }: { project: ProjectEntry | nul
               <X size={16} />
             </button>
 
+            {project.status && (
+              <span className="mb-3 inline-flex items-center rounded-full border border-primary/30 bg-primary/5 px-3 py-1 font-mono text-[10px] tracking-[0.18em] text-primary/80">
+                {project.status}
+              </span>
+            )}
             <h3 id="project-modal-title" className="pr-10 font-display text-2xl font-medium tracking-tight sm:text-3xl">
               {project.title}
             </h3>
@@ -74,11 +79,27 @@ export function ProjectModal({ project, onClose }: { project: ProjectEntry | nul
 
             {project.results && project.results.length > 0 && (
               <div className="mt-5">
-                <h4 className="font-mono text-xs tracking-[0.2em] text-primary/70">RESULTS</h4>
+                <h4 className="font-mono text-xs tracking-[0.2em] text-primary/70">
+                  {project.status ? "DONE SO FAR" : "RESULTS"}
+                </h4>
                 <ul className="mt-1.5 space-y-1">
                   {project.results.map((r) => (
                     <li key={r} className="text-sm leading-relaxed text-muted">
                       <span className="text-secondary">— </span>
+                      {r}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {project.roadmap && project.roadmap.length > 0 && (
+              <div className="mt-5">
+                <h4 className="font-mono text-xs tracking-[0.2em] text-primary/70">WHAT&apos;S NEXT</h4>
+                <ul className="mt-1.5 space-y-1">
+                  {project.roadmap.map((r) => (
+                    <li key={r} className="text-sm leading-relaxed text-muted">
+                      <span className="text-secondary">→ </span>
                       {r}
                     </li>
                   ))}

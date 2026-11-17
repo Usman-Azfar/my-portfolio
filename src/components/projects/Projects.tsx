@@ -11,10 +11,11 @@ import { ProjectModal } from "./ProjectModal";
 
 const ORDER: Record<string, number> = {
   marlin: 0,
-  helmx: 1,
-  campuscore: 2,
-  moneymate: 3,
-  "8086-debugger": 4,
+  "hisaab-ai": 1,
+  helmx: 2,
+  campuscore: 3,
+  moneymate: 4,
+  "8086-debugger": 5,
   openboxes: 10,
   "home-assistant": 11,
   "rust-reference": 12,

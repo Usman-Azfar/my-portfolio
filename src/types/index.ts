@@ -171,6 +171,8 @@ export interface ProjectEntry {
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
+  status?: string; // e.g. "In progress"; shown as a badge
+  roadmap?: string[]; // planned work, shown for in-progress projects
   openSource?: boolean; // listed under "Open Source Contributions"
   contributionStatus?: string; // e.g. "Merged", "In review"
 }

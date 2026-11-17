@@ -27,16 +27,16 @@ export function ProjectCard({ project, onOpen }: { project: ProjectEntry; onOpen
               <Sparkles size={11} /> Flagship
             </span>
           )}
-          {project.contributionStatus && (
+          {(project.status ?? project.contributionStatus) && (
             <span
               className={cn(
                 "inline-flex items-center rounded-full border px-3 py-1 font-mono text-[10px] tracking-[0.18em]",
-                project.contributionStatus.startsWith("Merged")
+                (project.status ?? project.contributionStatus)?.startsWith("Merged")
                   ? "border-green-400/40 bg-green-500/10 text-green-300"
                   : "border-primary/30 bg-primary/5 text-primary/80"
               )}
             >
-              {project.contributionStatus}
+              {project.status ?? project.contributionStatus}
             </span>
           )}
           <ArrowUpRight
