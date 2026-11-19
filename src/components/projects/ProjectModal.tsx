@@ -131,7 +131,7 @@ export function ProjectModal({ project, onClose }: { project: ProjectEntry | nul
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
                   >
-                    <GithubIcon size={15} /> Source
+                    <GithubIcon size={15} /> {project.openSource ? "View on GitHub" : "Source"}
                   </a>
                 )}
                 {project.liveUrl && (
