@@ -154,9 +154,9 @@ export const techStack: TechCategoryData[] = [
     id: "languages",
     label: "Languages",
     items: [
-      { name: "Java", relatedExperienceIds: ["infotech"] },
-      { name: "Python", relatedExperienceIds: ["tekvill"] },
-      { name: "Kotlin", relatedProjectIds: ["moneymate"] },
+      { name: "Java", relatedProjectIds: ["hisaab-ai", "openboxes"], relatedExperienceIds: ["infotech"] },
+      { name: "Python", relatedProjectIds: ["hisaab-ai"], relatedExperienceIds: ["tekvill"] },
+      { name: "Kotlin", relatedProjectIds: ["moneymate", "home-assistant"] },
       { name: "C / C++" },
     ],
   },
@@ -165,7 +165,7 @@ export const techStack: TechCategoryData[] = [
     label: "Backend & Systems",
     items: [
       { name: "Spring Boot", relatedExperienceIds: ["infotech"] },
-      { name: "REST APIs", relatedExperienceIds: ["infotech"] },
+      { name: "REST APIs", relatedProjectIds: ["openboxes"], relatedExperienceIds: ["infotech"] },
       { name: "SQL", relatedExperienceIds: ["infotech"] },
       { name: "Databases", relatedProjectIds: ["campuscore"] },
       { name: "System Programming" },
@@ -178,7 +178,7 @@ export const techStack: TechCategoryData[] = [
       { name: "Machine Learning", relatedProjectIds: ["helmx"], relatedExperienceIds: ["tekvill"] },
       { name: "Deep Learning", relatedProjectIds: ["helmx"], relatedExperienceIds: ["tekvill"] },
       { name: "CNN", relatedProjectIds: ["helmx"] },
-      { name: "NLP", relatedExperienceIds: ["tekvill"] },
+      { name: "NLP", relatedProjectIds: ["hisaab-ai"], relatedExperienceIds: ["tekvill"] },
       { name: "LLMs", relatedExperienceIds: ["tekvill"] },
       { name: "Computer Vision", relatedProjectIds: ["helmx"] },
       { name: "Edge AI", relatedProjectIds: ["helmx"] },
@@ -188,8 +188,8 @@ export const techStack: TechCategoryData[] = [
     id: "mobile",
     label: "Mobile",
     items: [
-      { name: "Android", relatedProjectIds: ["moneymate"] },
-      { name: "Kotlin", relatedProjectIds: ["moneymate"] },
+      { name: "Android", relatedProjectIds: ["moneymate", "home-assistant"] },
+      { name: "Kotlin", relatedProjectIds: ["moneymate", "home-assistant"] },
     ],
   },
   {
@@ -197,7 +197,7 @@ export const techStack: TechCategoryData[] = [
     label: "Cloud / DevOps",
     items: [
       { name: "AWS" },
-      { name: "Docker", relatedExperienceIds: ["tekvill"] },
+      { name: "Docker", relatedProjectIds: ["hisaab-ai"], relatedExperienceIds: ["tekvill"] },
       { name: "Git" },
       { name: "Linux" },
     ],
@@ -206,10 +206,10 @@ export const techStack: TechCategoryData[] = [
     id: "engineering",
     label: "Engineering",
     items: [
-      { name: "System Design", relatedProjectIds: ["helmx"] },
+      { name: "System Design", relatedProjectIds: ["helmx", "hisaab-ai"] },
       { name: "API Design", relatedExperienceIds: ["infotech"] },
       { name: "Database Design", relatedProjectIds: ["campuscore"] },
-      { name: "Software Architecture" },
+      { name: "Software Architecture", relatedProjectIds: ["hisaab-ai"] },
     ],
   },
 ];
