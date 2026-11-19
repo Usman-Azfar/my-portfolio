@@ -156,7 +156,7 @@ export const techStack: TechCategoryData[] = [
     items: [
       { name: "Java", relatedExperienceIds: ["infotech"] },
       { name: "Python", relatedExperienceIds: ["tekvill"] },
-      { name: "Kotlin", relatedProjectIds: ["finance-tracker"] },
+      { name: "Kotlin", relatedProjectIds: ["moneymate"] },
       { name: "C / C++" },
     ],
   },
@@ -167,7 +167,7 @@ export const techStack: TechCategoryData[] = [
       { name: "Spring Boot", relatedExperienceIds: ["infotech"] },
       { name: "REST APIs", relatedExperienceIds: ["infotech"] },
       { name: "SQL", relatedExperienceIds: ["infotech"] },
-      { name: "Databases", relatedProjectIds: ["course-management"] },
+      { name: "Databases", relatedProjectIds: ["campuscore"] },
       { name: "System Programming" },
     ],
   },
@@ -188,8 +188,8 @@ export const techStack: TechCategoryData[] = [
     id: "mobile",
     label: "Mobile",
     items: [
-      { name: "Android", relatedProjectIds: ["finance-tracker"] },
-      { name: "Kotlin", relatedProjectIds: ["finance-tracker"] },
+      { name: "Android", relatedProjectIds: ["moneymate"] },
+      { name: "Kotlin", relatedProjectIds: ["moneymate"] },
     ],
   },
   {
@@ -208,7 +208,7 @@ export const techStack: TechCategoryData[] = [
     items: [
       { name: "System Design", relatedProjectIds: ["helmx"] },
       { name: "API Design", relatedExperienceIds: ["infotech"] },
-      { name: "Database Design", relatedProjectIds: ["course-management"] },
+      { name: "Database Design", relatedProjectIds: ["campuscore"] },
       { name: "Software Architecture" },
     ],
   },
